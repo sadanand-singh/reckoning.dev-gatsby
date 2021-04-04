@@ -10,6 +10,7 @@ seoImage: "og-card-blog-bottom-footer.png"
 
 import { Callout } from "../../../src/components/atoms.js"
 import { ExtLink } from "../../../src/components/atoms.js"
+import { ProMark } from "../../../src/components/atoms.js"
 
 ![Footer issue](footer-gap.png)
 
@@ -40,6 +41,14 @@ main {
 ```
 
 I love this solution because it's so simple and it tells us what it does.
+
+<Callout>
+
++ <ProMark /> The whole body is a flexbox which has a minimum height of whatever the browser's height is.
+
++ <ProMark /> The main content's height grows to occupy the remaining space. Pushing the footer to the bottom of the page.
+
+</Callout>
 
 <Callout>
 
