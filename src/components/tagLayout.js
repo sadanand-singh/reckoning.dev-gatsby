@@ -1,4 +1,5 @@
 import React from "react"
+import kebabCase from "lodash.kebabcase"
 import Layout from "./layout"
 import Seo from "./seo"
 import Newsletter from "./newsletter"
@@ -68,7 +69,7 @@ const TagPage = ({ pageContext, data }) => {
                     <span key={index} className="text-sm ">
                         {(index ? ', ' : '')}
                         <span className="hover:text-accent hover:underline">
-                            <a href={`/tags/${tag.fieldValue}/`}>{tag.fieldValue} ({tag.totalCount})</a>
+                            <a href={`/tags/${kebabCase(tag.fieldValue)}`.replace(/\/\/+/g, `/`)}>{tag.fieldValue} ({tag.totalCount})</a>
                         </span>
                     </span>
                 ))}

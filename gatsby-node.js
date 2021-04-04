@@ -1,4 +1,5 @@
 const path = require("path")
+const kebabCase = require(`lodash.kebabcase`)
 const { createFilePath } = require("gatsby-source-filesystem")
 
 exports.onCreateNode = ({ node, actions, getNode }) => {
@@ -66,7 +67,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     console.log(`Dynamically creating tags page for ${tag.fieldValue}`)
 
     createPage({
-      path: `/tags/${tag.fieldValue}/`,
+      path: `/tags/${kebabCase(tag.fieldValue)}`.replace(/\/\/+/g, `/`),
       component: path.resolve(`./src/components/tagLayout.js`),
       context: {
         tag: tag.fieldValue,

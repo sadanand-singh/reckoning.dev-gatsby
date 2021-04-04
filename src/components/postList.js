@@ -1,5 +1,5 @@
 import React from "react"
-import { graphql, useStaticQuery } from "gatsby"
+import kebabCase from "lodash.kebabcase"
 import { Link } from "gatsby"
 
 const Post = ({ post }) => {
