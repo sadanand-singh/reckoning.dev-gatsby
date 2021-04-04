@@ -21,7 +21,10 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 
   const result = await graphql(`
     query {
-      allMdx {
+      allMdx (
+        sort: {fields: frontmatter___date, order: DESC}
+        filter: { frontmatter: { published: { eq: true } } }
+        ) {
         edges {
           node {
             id
@@ -30,6 +33,22 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
             }
             frontmatter {
               seoImage
+            }
+          }
+          next {
+            fields {
+              slug
+            }
+            frontmatter {
+              title
+            }
+          }
+          previous {
+            fields {
+              slug
+            }
+            frontmatter {
+              title
             }
           }
         }
@@ -48,7 +67,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 
   const posts = result.data.allMdx.edges
 
-  posts.forEach(({ node }, index) => {
+  posts.forEach(({ node, next, previous }, index) => {
     console.log(
       `🍕 Dynamically creating page for ${node.fields.slug} with og-image ${node.frontmatter.seoImage}`
     )
@@ -56,7 +75,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     createPage({
       path: node.fields.slug,
       component: path.resolve(`./src/components/postLayout.js`),
-      context: { id: node.id, ogImageSlug: node.frontmatter.seoImage },
+      context: { id: node.id, ogImageSlug: node.frontmatter.seoImage, next, previous },
     })
   })
 

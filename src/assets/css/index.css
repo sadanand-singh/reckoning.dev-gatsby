@@ -120,6 +120,10 @@ body {
   animation: rotate 25s linear infinite;
 }
 
+.no-und {
+  text-decoration: none !important;
+}
+
 a.anchor {
   fill: var(--color-text-accent);
   top: 0.65rem !important;
