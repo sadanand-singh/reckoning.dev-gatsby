@@ -1,0 +1,68 @@
+{
+  "name": "reckoning.dev",
+  "private": true,
+  "description": "My personal website made using Gatsby",
+  "version": "1.0.0",
+  "author": "Sadanand Singh <mrg6nm2ji@relay.firefox.com>",
+  "dependencies": {
+    "@mdx-js/mdx": "^1.6.22",
+    "@mdx-js/react": "^1.6.22",
+    "@tailwindcss/typography": "^0.1.3",
+    "gatsby": "^3.2.1",
+    "gatsby-plugin-image": "^1.2.0",
+    "gatsby-plugin-env-variables": "^2.0.0",
+    "gatsby-plugin-google-analytics": "^3.2.0",
+    "gatsby-plugin-manifest": "^3.2.0",
+    "gatsby-plugin-mdx": "^2.2.0",
+    "gatsby-plugin-offline": "^4.2.0",
+    "gatsby-plugin-postcss": "^4.2.0",
+    "gatsby-plugin-react-helmet": "^4.2.0",
+    "gatsby-plugin-robots-txt": "^1.5.5",
+    "gatsby-plugin-sharp": "^3.2.0",
+    "gatsby-plugin-sitemap": "^3.2.0",
+    "gatsby-remark-autolink-headers": "^3.2.0",
+    "gatsby-remark-images": "^4.2.0",
+    "gatsby-remark-prismjs": "^4.2.0",
+    "gatsby-source-filesystem": "^3.2.0",
+    "gatsby-transformer-sharp": "^3.2.0",
+    "prismjs": "^1.23.0",
+    "prop-types": "^15.7.2",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-helmet": "^6.1.0",
+    "sharp": "^0.28.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.13.4",
+    "@storybook/addon-a11y": "^6.2.2",
+    "@storybook/addon-actions": "^6.2.2",
+    "@storybook/addon-knobs": "^6.2.2",
+    "@storybook/addon-links": "^6.2.2",
+    "@storybook/addons": "^6.2.2",
+    "@storybook/react": "^6.2.2",
+    "babel-loader": "^8.2.2",
+    "cross-env": "^7.0.3",
+    "prettier": "2.2.1",
+    "storybook-dark-mode": "^1.0.7",
+    "tailwindcss": "^1.6.0"
+  },
+  "keywords": [
+    "gatsby"
+  ],
+  "license": "MIT",
+  "scripts": {
+    "build": "gatsby build",
+    "develop": "cross-env GATSBY_GRAPHQL_IDE=playground gatsby develop -H 0.0.0.0",
+    "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
+    "start": "npm run develop",
+    "serve": "gatsby serve",
+    "clean": "gatsby clean",
+    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sadanand-singh/reckoning.dev.gatsby.git"
+  }
+}
