@@ -24,38 +24,14 @@ const Post = ({ post }) => {
           </svg>
         </span>
         {post.tags.map((tag, index) => (
-          <span key={index} className="text-sm ">{(index ? ', ' : '')}<span className="hover:text-accent hover:underline"><a href={`/tags/${tag}/`}>{tag}</a></span></span>
+          <span key={index} className="text-sm ">{(index ? ', ' : '')}<span className="hover:text-accent hover:underline"><a href={`/tags/${kebabCase(tag)}`.replace(/\/\/+/g, `/`)}>{tag}</a></span></span>
         ))}
       </h4>
     </li>
   )
 }
 
-const PostList = ({ showHeading }) => {
-  const data = useStaticQuery(graphql`
-    query PageQuery {
-      allMdx(
-        sort: { fields: frontmatter___date, order: DESC }
-        filter: { frontmatter: { published: { eq: true } } }
-      ) {
-        edges {
-          node {
-            id
-            frontmatter {
-              title
-              date(formatString: "MMMM Do YYYY")
-              published
-              tags
-              description
-            }
-            fields {
-              slug
-            }
-          }
-        }
-      }
-    }
-  `)
+const PostList = ({ posts, showHeading }) => {
   return (
     <section className="">
       {showHeading && (
@@ -64,7 +40,7 @@ const PostList = ({ showHeading }) => {
         </h2>
       )}
       <ul className="mt-3 divide-y divide-subtle">
-        {data.allMdx.edges.map(({ node }) => {
+        {posts.map(({ node }) => {
           const post = {
             slug: node.fields.slug,
             title: node.frontmatter.title,

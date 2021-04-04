@@ -1,5 +1,6 @@
 import React from "react"
 // import { Link } from "gatsby"
+import { graphql, useStaticQuery } from "gatsby"
 
 import { Blob } from "../components/atoms"
 import Layout from "../components/layout"
@@ -10,6 +11,30 @@ import Contact from "../components/contact"
 import Image from "../components/image"
 
 const IndexPage = () => {
+  const data = useStaticQuery(graphql`
+    query IndexPageQuery {
+      allMdx(
+        sort: { fields: frontmatter___date, order: DESC }
+        filter: { frontmatter: { published: { eq: true } } }
+      ) {
+        edges {
+          node {
+            id
+            frontmatter {
+              title
+              date(formatString: "MMMM Do YYYY")
+              published
+              tags
+              description
+            }
+            fields {
+              slug
+            }
+          }
+        }
+      }
+    }
+  `)
   return (
     <Layout activePage="/">
       <Seo />
@@ -28,7 +53,7 @@ const IndexPage = () => {
           </div>
         </div>
       </div>
-      <PostList showHeading />
+      <PostList posts={data.allMdx.edges} showHeading />
       <ProjectList showHeading />
       <Contact />
     </Layout>
