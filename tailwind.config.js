@@ -180,6 +180,7 @@ module.exports = {
       },
       borderColor: {
         accent: "var(--color-text-accent)",
+        subtle: "var(--color-bg-secondary)",
       },
       letterSpacing: {
         widestest: "0.2em",

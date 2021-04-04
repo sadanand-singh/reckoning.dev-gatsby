@@ -52,6 +52,21 @@ const PostList = ({ posts, showHeading }) => {
         })}
       </ul>
 
+      {showHeading &&
+        (
+          <div className="mt-4 border-t pt-4 border-subtle" aria-label="hidden">
+            <div className="inline-block pr-3 group  hover:text-accent text-lg">
+              <Link to="/blog">
+                -&gt;
+                <span className="ml-1 transition inline-block transform duration-500 hover:translate-x-3 ">
+                  All Blog Posts
+                </span>
+              </Link>
+            </div>
+          </div>
+        )
+      }
+
     </section>
   )
 }
