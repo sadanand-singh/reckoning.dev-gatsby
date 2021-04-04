@@ -31,7 +31,7 @@ const Post = ({ post }) => {
                     <span key={index} className="text-sm ">
                         {(index ? ', ' : '')}
                         <span className="hover:text-accent hover:underline">
-                            <a href={`/tags/${tag}/`}>{tag}</a>
+                            <a href={`/tags/${kebabCase(tag.fieldValue)}`.replace(/\/\/+/g, `/`)}>{tag}</a>
                         </span>
                     </span>
                 ))}

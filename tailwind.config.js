@@ -11,6 +11,12 @@ module.exports = {
     },
   },
   theme: {
+    screens: {
+      sm: '640px',
+      md: '768px',
+      lg: '1024px',
+      xl: '1280px',
+    },
     colors: {
       transparent: 'transparent',
       current: 'currentColor',
@@ -130,6 +136,57 @@ module.exports = {
       },
     },
     extend: {
+      typography: {
+        DEFAULT: {
+          css: {
+            color: "var(--color-text-tertiary)",
+            a: {
+              color: "var(--color-text-tertiary)",
+              "&:hover": {
+                color: "var(--color-text-accent)",
+              },
+            },
+            h1: {
+              color: "var(--color-text-primary)",
+            },
+            h2: {
+              color: "var(--color-text-accent)",
+            },
+            h3: {
+              color: "var(--color-text-accent)",
+            },
+            h4: {
+              color: "var(--color-text-accent)",
+            },
+            blockquote: {
+              color: "var(--color-text-tertiary)",
+            },
+            strong: {
+              color: "var(--color-text-tertiary)",
+            },
+            blockquote: {
+              borderLeftWidth: "0.25rem",
+              borderLeftColor: "var(--color-text-accent)",
+            },
+            "blockquote p:first-of-type::before": {
+              content: "",
+            },
+            "blockquote p:last-of-type::after": {
+              content: "",
+            },
+            code: {
+              color: "var(--color-text-tertiary)",
+              fontWeight: "500",
+            },
+            "code::before": {
+              content: "",
+            },
+            "code::after": {
+              content: "",
+            },
+          },
+        },
+      },
       margin: {
         "-72": "-18rem",
         "-80": "-20rem",
@@ -189,61 +246,12 @@ module.exports = {
         90: ".9",
       },
     },
-    typography: {
-      default: {
-        css: {
-          color: "var(--color-text-tertiary)",
-          a: {
-            color: "var(--color-text-tertiary)",
-            "&:hover": {
-              color: "var(--color-text-accent)",
-            },
-          },
-          h1: {
-            color: "var(--color-text-primary)",
-          },
-          h2: {
-            color: "var(--color-text-accent)",
-          },
-          h3: {
-            color: "var(--color-text-accent)",
-          },
-          h4: {
-            color: "var(--color-text-accent)",
-          },
-          blockquote: {
-            color: "var(--color-text-tertiary)",
-          },
-          strong: {
-            color: "var(--color-text-tertiary)",
-          },
-          blockquote: {
-            borderLeftWidth: "0.25rem",
-            borderLeftColor: "var(--color-text-accent)",
-          },
-          "blockquote p:first-of-type::before": {
-            content: "",
-          },
-          "blockquote p:last-of-type::after": {
-            content: "",
-          },
-          code: {
-            color: "var(--color-text-tertiary)",
-            fontWeight: "500",
-          },
-          "code::before": {
-            content: "",
-          },
-          "code::after": {
-            content: "",
-          },
-        },
-      },
-    },
   },
   variants: {
     textColor: ["responsive", "hover", "focus", "group-hover"],
+    translate: ["responsive", "hover", "focus", "group-hover"],
     borderWidth: ["responsive", "hover", "focus"],
+    fontWeight: ['hover', 'focus'],
   },
   plugins: [require("@tailwindcss/typography")],
 }
