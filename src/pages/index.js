@@ -16,6 +16,7 @@ const IndexPage = () => {
       allMdx(
         sort: { fields: frontmatter___date, order: DESC }
         filter: { frontmatter: { published: { eq: true } } }
+        limit: 6
       ) {
         edges {
           node {
