@@ -8,7 +8,7 @@ tags:
 published: true
 toc: true
 ---
-import { Callout } from "../../../../src/components/atoms.js"
+import { Callout } from "../../../src/components/atoms.js"
 
 In this post we will explore a class of machine learning methods called
 [Support Vector Machines](https://en.wikipedia.org/wiki/Support_vector_machine) also known commonly
@@ -19,7 +19,9 @@ as _SVM_.
 SVM is a [supervised machine learning](https://en.wikipedia.org/wiki/Supervised_learning) algorithm
 which can be used for both classification and regression.
 
-![](https://res.cloudinary.com/sadanandsingh/image/upload/v1596313988/binaryclass_2d-300x284_kmozm1_q5ogxk.png)
+<div style="float: right; margin: 10px;">
+<img src='https://res.cloudinary.com/sadanandsingh/image/upload/v1596313988/binaryclass_2d-300x284_kmozm1_q5ogxk.png' />
+</div>
 
 In the simplest classification problem, given some data points each belonging to one of the two
 classes, the goal is to decide which class a new data point will be in. A simple linear solution to
@@ -37,7 +39,9 @@ The figure on the right is a binary classification problem (points labeled $y_i 
 linearly separable in space defined by the vector **x**. Green and purple line separate two classes
 with a small margin, whereas yellow line separates them with the maximum margin.
 
-![](https://res.cloudinary.com/sadanandsingh/image/upload/v1596314018/binaryclass_margin-300x266_wammb3_jng4n9.png)
+<div style="float: left; margin: 10px;">
+<img src='https://res.cloudinary.com/sadanandsingh/image/upload/v1596314018/binaryclass_margin-300x266_wammb3_jng4n9.png' />
+</div>
 
 Mathematically, for the linearly separable case, any point **x** lying on the separating hyperplane
 satisfies: $\mathbf{x}^T\mathbf{w} + b = 0$, where $\mathbf{w}$ is the vector normal to the

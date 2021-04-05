@@ -8,6 +8,7 @@ slug: tree-based-models
 published: true
 toc: true
 ---
+import { Callout } from "../../../../src/components/atoms.js"
 
 Tree based learning algorithms are quite
 [common in data science competitions](https://www.datasciencecentral.com/profiles/blogs/want-to-win-at-kaggle-pay-attention-to-your-ensembles).
@@ -570,35 +571,47 @@ Most of these limitations can be easily overcome by using several improvements o
 In the following sections, we will be looking some of these concepts, mainly bagging, and random
 forests.
 
-> **Tree Pruning** <br/><br/> Since decision trees have a very high tendency to over-fit the data,
-> a smaller tree with fewer splits (that is, fewer regions $R_1, \ldots, R_J$) might lead to lower
-> variance and better interpretation at the cost of a little bias. One possible alternative to the
-> process described above is to build the tree only so long as the decrease in the node impurity
-> measure, $Q_m$ due to each split exceeds some (high) threshold. However, due to greedy nature of
-> the splitting algorithm, it is too short-sighted since a seemingly worthless split early on in
-> the tree might be followed by a very good split i.e., a split that leads to a large reduction in
-> $Q_m$ later on.<br/><br/> Therefore, a better strategy is to grow a very large tree $T_0$, and
-> then prune it back in order to obtain a subtree. There can be several strategies to pruning, Cost
-> complexity pruning, also known as weakest link pruning in one way to do this effectively. Rather
-> than considering every possible subtree, a sequence of trees indexed by a non-negative tuning
-> parameter $\alpha$ is considered. For each value of $\alpha$ there corresponds a subtree
-> $T \subset T_0$ such that
->
-> $$
-> \sum_{m=1}^{|T|}\sum_{i:x_i \in R_m}\big(y_i-\hat{y}_{R_m}\big)^2 + \alpha |T|
-> $$
->
-> is as small as possible. Here $|T|$ indicates the number of terminal nodes of the tree $T$, $R_m$
-> is the rectangle (i.e. the subset of predictor space) corresponding to the $m^{th}$ terminal
-> node, and $\hat{y}_{R_m}$ is the predicted response associated with $R_m$, i.e., the mean (or
-> mode in the case of classification trees) of the training observations in $R_m$. <br/><br/>The
-> tuning parameter $\alpha$ controls a trade-off between the subtree’s complexity and its fit to
-> the training data. When $\alpha = 0$, then the subtree $T$ will simply equal $T_0$. As $\alpha$
-> increases, there is a price to pay for having a tree with many terminal nodes, and so the above
-> equation will tend to be minimized for a smaller subtree. The pruning parameter $\alpha$ can be
-> selected using some kind of cross validation. <br/><br/> Note that
-> [sklearn.tree](https://scikit-learn.org/stable/modules/classes.html#module-sklearn.tree) decision
-> tree classifier (and regressor) does not currently support pruning.
+<Callout type="note">
+
+**Tree Pruning**
+
+Since decision trees have a very high tendency to over-fit the data,
+a smaller tree with fewer splits (that is, fewer regions $R_1, \ldots, R_J$) might lead to lower
+variance and better interpretation at the cost of a little bias. One possible alternative to the
+process described above is to build the tree only so long as the decrease in the node impurity
+measure, $Q_m$ due to each split exceeds some (high) threshold. However, due to greedy nature of
+the splitting algorithm, it is too short-sighted since a seemingly worthless split early on in
+the tree might be followed by a very good split i.e., a split that leads to a large reduction in
+$Q_m$ later on.
+
+Therefore, a better strategy is to grow a very large tree $T_0$, and
+then prune it back in order to obtain a subtree. There can be several strategies to pruning, Cost
+complexity pruning, also known as weakest link pruning in one way to do this effectively. Rather
+than considering every possible subtree, a sequence of trees indexed by a non-negative tuning
+parameter $\alpha$ is considered. For each value of $\alpha$ there corresponds a subtree
+$T \subset T_0$ such that
+
+$$
+\sum_{m=1}^{|T|}\sum_{i:x_i \in R_m}\big(y_i-\hat{y}_{R_m}\big)^2 + \alpha |T|
+$$
+
+is as small as possible. Here $|T|$ indicates the number of terminal nodes of the tree $T$, $R_m$
+is the rectangle (i.e. the subset of predictor space) corresponding to the $m^{th}$ terminal
+node, and $\hat{y}_{R_m}$ is the predicted response associated with $R_m$, i.e., the mean (or
+mode in the case of classification trees) of the training observations in $R_m$.
+
+The tuning parameter $\alpha$ controls a trade-off between the subtree’s complexity and its fit to
+the training data. When $\alpha = 0$, then the subtree $T$ will simply equal $T_0$. As $\alpha$
+increases, there is a price to pay for having a tree with many terminal nodes, and so the above
+equation will tend to be minimized for a smaller subtree. The pruning parameter $\alpha$ can be
+selected using some kind of cross validation.
+
+Note that
+[sklearn.tree](https://scikit-learn.org/stable/modules/classes.html#module-sklearn.tree) decision
+tree classifier (and regressor) does not currently support pruning.
+
+</Callout>
+
 
 ## Bootstrap Aggregating (Bagging)
 
@@ -624,9 +637,9 @@ $\hat{f}^{*b}(x)$ to obtain one aggregate prediction,
 $$
   \hat{f}_{bag} =
     \begin{cases}
-      \frac{1}{B}\sum_{b=1}^{B} \hat{f}^{*b}(x) & \text{ for Regression Problems} \cr
-      \cr
-      \mathop{\arg\max}\limits_{b=1 \ldots B} \hat{f}^{*b}(x) & \text{ for Classification Problems}
+      \frac{1}{B}\sum_{b=1}^{B} \hat{f}^{*b}(x) \\
+      \\
+      \mathop{\arg\max}\limits_{b=1 \ldots B} \hat{f}^{*b}(x)
     \end{cases}
 $$
 

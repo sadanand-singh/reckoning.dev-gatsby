@@ -47,13 +47,13 @@ in this post has been compiled from the [Arch Wiki][a-wiki].
   <div class="flex-1 p-1 m-1">
     <figure>
     <img src="https://res.cloudinary.com/sadanandsingh/image/upload/v1544988349/images/gnome3/SystemInfo.png"/>
-    <figcaption class="text-center">System Info</figcaption>
+    <figcaption class="text-center text-sm">System Info</figcaption>
     </figure>
   </div>
   <div class="flex-1 p-1 m-1">
     <figure>
     <img src="https://res.cloudinary.com/sadanandsingh/image/upload/v1544988349/images/gnome3/ApplicationMenu.png"/>
-    <figcaption class="text-center">Application Menu</figcaption>
+    <figcaption class="text-center text-sm">Application Menu</figcaption>
     </figure>
   </div>
 </div>
@@ -90,7 +90,7 @@ proceeding any further.**
 You should boot into _UEFI_ mode if you have a UEFI motherboard and UEFI mode enabled. To verify
 that you have booted in UEFI mode, please run:
 
-```shell:showLines=false
+```bash:showLines=false
 efivar -l
 ```
 
@@ -101,7 +101,7 @@ not get any list of UEFI variables.
 If you have high resolution 4K monitor like me, you will need to run following to increase fonts to
 a readable size:
 
-```shell:showLines=false
+```bash:showLines=false
 pacman -Sy
 pacman -S terminus-font
 setfont ter-132n
@@ -133,7 +133,7 @@ data. This can be done by filling the disk with zeros. Note that my disk is 240 
 put a count of 250000. After filling the space with zero, we will need to recreate/overwrite the
 GPT.
 
-```shell:showLines=false
+```bash:showLines=false
 dd if=/dev/zero of=/dev/sda bs=1M count=250000
 gdisk /dev/sda
 Found invalid MBR and corrupt GPT. What do you want to do? (Using the
@@ -186,7 +186,7 @@ this setup, we will be enabling full encryption on `/dev/sda2` only.
 In order to enable disk encryption, we will first create a root luks volume, open it and then
 format it.
 
-```shell:showLines=false
+```bash:showLines=false
 # first, we need to prepare the encrypted (outer) volume
 cryptsetup --cipher aes-xts-plain64 --hash sha512 --use-random --verify-passphrase luksFormat /dev/sda2
 
@@ -204,13 +204,13 @@ cryptsetup luksOpen /dev/sda2 root
   <div class="flex-1 p-1 m-1">
     <figure>
     <img src="https://res.cloudinary.com/sadanandsingh/image/upload/v1544988350/images/gnome3/workspaces.png"/>
-    <figcaption class="text-center">Gnome Workspaces</figcaption>
+    <figcaption class="text-center text-xs">Gnome Workspaces</figcaption>
     </figure>
   </div>
   <div class="flex-1 p-1 m-1">
     <figure>
     <img src="https://res.cloudinary.com/sadanandsingh/image/upload/v1544988349/images/gnome3/Apps.png"/>
-    <figcaption class="text-center">Gnome Applications</figcaption>
+    <figcaption class="text-center text-xs">Gnome Applications</figcaption>
     </figure>
   </div>
 </div>
@@ -221,7 +221,7 @@ If you want to automatically login the encrypted disk password from an externall
 SD card, you will first need to create a random key file. Then, add this key to the luks container,
 so that it can be later used to open the encrypted drive.
 
-```shell:showLines=false
+```bash:showLines=false
 dd bs=512 count=4 if=/dev/urandom of=KEYFILE
 cryptsetup luksAddKey /dev/sda2 KEYFILE
 ```
@@ -230,7 +230,7 @@ cryptsetup luksAddKey /dev/sda2 KEYFILE
 
 The recommended way of using such a disk would be as follows:
 
-```shell:showLines=true
+```bash:showLines=true
 # assuming our USB of interest is /dev/sdd  and can be formatted
 #
 # Format the drive
@@ -262,7 +262,7 @@ At this point, we have following drives ready to format: `/dev/sda1`, `/dev/mapp
 [xfs]: https://wiki.archlinux.org/index.php/XFS
 [btrfs format]: https://wiki.archlinux.org/index.php/Btrfs
 
-```shell:showLines=false
+```bash:showLines=false
 mkfs.vfat -F32 /dev/sda1
 mkfs.btrfs -L arch /dev/mapper/root
 mkfs.xfs -L data /dev/sdb1
@@ -271,7 +271,7 @@ mkfs.xfs -L media /dev/sdc1
 
 Now, we will create _btrfs_ subvolumes and mount them properly for installation and final setup.
 
-```shell:showLines=false
+```bash:showLines=false
 mount /dev/mapper/root /mnt
 btrfs subvolume create /mnt/ROOT
 btrfs subvolume create /mnt/home
@@ -281,7 +281,7 @@ umount /mnt
 Now, once the sub-volumes have been created, we will mount them in appropriate locations with
 optimal flags.
 
-```shell:showLines=false
+```bash:showLines=false
 SSD_MOUNTS="rw,nodev,noatime,nodiratime,compress=lzo,ssd,discard,space_cache"
 HDD_MOUNTS="rw,relatime,attr2,inode64,noquota"
 EFI_MOUNTS="rw,noatime,discard,nodev,nosuid,noexec"
@@ -302,7 +302,7 @@ mount -o $EFI_MOUNTS /dev/sda1 /mnt/boot
 Now, we will do the actually installation of base packages. At this point, we will also **save the
 current `/etc/resolv.conf` file for future use!**
 
-```shell:showLines=false
+```bash:showLines=false
 pacstrap /mnt base base-devel btrfs-progs
 genfstab -U -p /mnt >> /mnt/etc/fstab
 
@@ -313,14 +313,14 @@ cp /etc/resolv.conf /mnt/etc/resolv.conf
 
 Edit the `/mnt/ect/fstab` file to add following `/tmp` mounts.
 
-```shell:title=/etc/fstab|showLines=false
+```bash:title=/etc/fstab|showLines=false
 tmpfs /tmp tmpfs rw,nodev,nosuid 0 0
 tmpfs /dev/shm tmpfs rw,nodev,nosuid,noexec 0 0
 ```
 
 Finally bind root for installation.
 
-```shell:showLines=false
+```bash:showLines=false
 arch-chroot /mnt
 pacman -Syy
 pacman -Syu
@@ -375,7 +375,7 @@ Now, we need to update the `mkinitcpio.conf` with specific modules needed for en
 
 Finally run:
 
-```shell:showLines=false
+```bash:showLines=false
 mkinitcpio -p linux
 ```
 
@@ -389,7 +389,7 @@ command to get started:
 [systemd-boot]: https://wiki.archlinux.org/index.php/Systemd-boot
 [systemd]: https://wiki.archlinux.org/index.php/Systemd
 
-```shell:showLines=false
+```bash:showLines=false
 bootctl install
 ```
 
@@ -401,7 +401,7 @@ identical - on **x64** systems ) and add `systemd-boot` itself as the default EF
 Finally to configure out boot loader, we will need the UUID of some of our hard drives. These can
 be easily done using the `blkid` command.
 
-```shell:showLines=false
+```bash:showLines=false
 blkid /dev/sda2 > /boot/loader/entries/arch.conf
 blkid /dev/sda2 >> /boot/loader/entries/arch.conf
 blkid /dev/mapper/root >> /boot/loader/entries/arch.conf
@@ -436,13 +436,13 @@ options ro cryptdevice=UUID=33333333-3333-3333-3333-333333333333:luks-33333333-3
   <div class="flex-1 p-1 m-1">
     <figure>
     <img src="https://res.cloudinary.com/sadanandsingh/image/upload/v1544988348/images/gnome3/editors.png"/>
-    <figcaption class="text-center">Editors</figcaption>
+    <figcaption class="text-center text-sm">Editors</figcaption>
     </figure>
   </div>
   <div class="flex-1 p-1 m-1">
     <figure>
     <img src="https://res.cloudinary.com/sadanandsingh/image/upload/v1544988350/images/gnome3/pcloud.png"/>
-    <figcaption class="text-center">pCloud App</figcaption>
+    <figcaption class="text-center text-sm">pCloud App</figcaption>
     </figure>
   </div>
 </div>
@@ -453,7 +453,7 @@ At first we will need to figure out the Ethernet controller on which cable is co
 be achieved by first finding out the kernel module that is being used by the live version on Arch.
 Then the module can be used to track the device that is active.
 
-```shell:showLines=false
+```bash:showLines=false
 lspci -v | grep Ethernet
 #
 # 02:00.0 Ethernet controller: Attansic Technology Corp. L1 Gigabit Ethernet Adapter (rev b0)
@@ -482,7 +482,7 @@ DHCP=ipv4
 
 Now, start the networkd service:
 
-```shell:showLines=false
+```bash:showLines=false
 systemctl enable systemd-networkd.service
 ```
 
@@ -500,7 +500,7 @@ discover services and hosts running on a local network with no specific configur
 you can plug into a network and instantly find printers to print to, files to look at and people to
 talk to. We can easily set it up it as follows:
 
-```shell:showLines=false
+```bash:showLines=false
 pacman -S avahi nss-mdns
 systemctl enable avahi-daemon.service
 ```
@@ -510,7 +510,7 @@ systemctl enable avahi-daemon.service
 We will now install the `nvidia` drivers so that our system is ready for any GUI based desktop
 installation after the first boot.
 
-```shell:showLines=false
+```bash:showLines=false
 pacman -S xorg-server nvidia nvidia-libgl nvidia-settings mesa
 ```
 
@@ -534,7 +534,7 @@ Exec=/usr/bin/mkinitcpio -p linux
 Nvidia has a daemon that is to be run at boot. To start the `persistence` daemon at boot, enable
 the `nvidia-persistenced.service`.
 
-```shell:showLines=false
+```bash:showLines=false
 systemctl enable nvidia-persistenced.service
 systemctl start nvidia-persistenced.service
 ```
@@ -553,7 +553,7 @@ First, we will need to add following to MODULES section of the `mkinitcpio.conf`
 
 We will also need to pass the _nvidia-drm.modeset=1_ kernel parameter during the boot.
 
-```shell:showLines=false
+```bash:showLines=false
 vim /etc/mkinitcpio.conf
 
 ...
@@ -573,7 +573,7 @@ mkinitcpio -p linux
 
 Now we are ready for the first boot! Run the following command:
 
-```shell:showLines=false
+```bash:showLines=false
 exit
 umount -R /mnt
 reboot
@@ -585,7 +585,7 @@ machine.
 
 After your new system boots, Network should be setup at the start. Check the status of network:
 
-```shell:showLines=false
+```bash:showLines=false
 # Set readable font first!
 setfont ter-132n
 ping google.com -c 2
@@ -606,7 +606,7 @@ If you do not get any output from ping, please follow the troubleshooting links 
 
 Now enable the automatic syncing of time from the ntp servers.
 
-```shell:showLines=false
+```bash:showLines=false
 timedatectl set-ntp true
 timedatectl status
 
@@ -624,7 +624,7 @@ NTP synchronized: yes
 We can also automate the `hostname` setup using the following `systemd` command. Please replace
 `$HOSTNAME` with the hostname of your choice.
 
-```shell:showLines=false
+```bash:showLines=false
 hostnamectl set-hostname $HOSTNAME
 ```
 
@@ -633,7 +633,7 @@ hostnamectl set-hostname $HOSTNAME
 Choose `$USERNAME` per your liking. I chose `ssingh`, so in future commands whenever you see
 `ssingh` please replace it with your `$USERNAME`.
 
-```shell:showLines=false
+```bash:showLines=false
 pacman -S zsh
 useradd -m -G wheel -s /usr/bin/zsh $USERNAME
 chfn --full-name "$FULL_NAME" $USERNAME
@@ -646,7 +646,7 @@ We can now proceed with the installation of Gnome 3. In the process, we will als
 useful applications and fonts. The process very trivial, install few packages and then enable the
 `gdm` service.
 
-```shell:showLines=false
+```bash:showLines=false
 pacman -S ttf-hack ttf-anonymous-pro ttf-dejavu ttf-freefont ttf-liberation
 pacman -S gnome gdm guake gnome-tweak-tool
 pacman -S screenfetch curl wget dconf-editor dmidecode git meld
@@ -662,7 +662,7 @@ We will now choose fastest merrors for pacman. The `pacman-contrib` package prov
 opening speeds to take advantage of using the fastest local mirror. Finally, we can reboot to log
 on to our new gnome system.
 
-```shell:showLines=false
+```bash:showLines=false
 pacman -S pacman-contrib
 cp /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.backup
 #
@@ -692,7 +692,7 @@ In order to make all types of installations uniform, I use [yay](https://github.
 the preferred tool for installing all packages. It is blazing fast as it is written in go and used
 all the flags from regular pacman.
 
-```shell:showLines=false
+```bash:showLines=false
 git clone https://aur.archlinux.org/yay.git
 cd yay
 makepkg -si
@@ -707,7 +707,7 @@ AUR packages.
 
 My preferred choice of browsers is _google chrome_.
 
-```shell:showLines=false
+```bash:showLines=false
 yay -S google-chrome
 ```
 
@@ -724,14 +724,14 @@ of the browser profile(s). These features of [psd] leads to following benefits:
 
 To setup. first install the `profile-sync-daemon` package.
 
-```shell:showLines=false
+```bash:showLines=false
 yay -S profile-sync-daemon
 ```
 
 Run _psd_ the first time which will create a configuration file at `$XDG_CONFIG_HOME/psd/psd.conf`
 which contains all settings.
 
-```shell:showLines=false
+```bash:showLines=false
 psd
 # First time running psd so please edit
 # /home/$USERNAME/.config/psd/psd.conf to your liking and run again.
@@ -748,7 +748,7 @@ USE_OVERLAYFS feature requires a Linux kernel version of 3.18.0 or greater to wo
 In order to use the OVERLAYFS feature, you will also need to give _sudo_ permissions to psd-helper
 at the end of the sudoers file, as follows (replace `$USERNAME` accordingly):
 
-```shell:showLines=false
+```bash:showLines=false
 vim /etc/sudoers
 ...
 $USERNAME ALL=(ALL) NOPASSWD: /usr/bin/psd-overlay-helper
@@ -797,14 +797,14 @@ file.
 
 To get started first install the `openssh` package.
 
-```shell:showLines=false
+```bash:showLines=false
 yay -S openssh
 ```
 
 The ssh server can be started using the `systemd` service. Before starting the service, however, we
 want to generate ssh keys and setup the server for login based only on keys.
 
-```shell:showLines=false
+```bash:showLines=false
 ssh-keygen -t ed25519
 
 # Create a .ssh/config file for rmate usage in sublime text
@@ -829,7 +829,7 @@ Furthermore, before enabling the `sshd` service, please also ensure to copy your
 relevant other servers and places like [github](https://github.com/). We can now use `systemd` to
 start the ssh service.
 
-```shell:showLines=false
+```bash:showLines=false
 systemctl enable sshd.socket
 systemctl start sshd.socket
 ```
@@ -844,7 +844,7 @@ In this section, we will be installing my variation of
 
 We will first install the main zprezto, then add my own modification on top of it.
 
-```shell:showLines=false
+```bash:showLines=false
 git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
 
 # Now, We will add my version of prezto to the same git repo.
@@ -871,7 +871,7 @@ And we are all setup for using `zsh`!
 We will modify gnome 3 by changing theme, icons and fonts. First install additional themes, fonts,
 icons etc.
 
-```shell:showLines=false
+```bash:showLines=false
 yay -S ttf-font-awesome adobe-source-code-pro-fonts
 
 # Sardi icons
@@ -937,7 +937,7 @@ anything related to Windows!). pcloud has some interesting features:
 Additionally, I found some ultra- great deal over the black Friday weekend! To get support for
 pcloud in Arch, all you need to do is install it!
 
-```shell:showLines=false
+```bash:showLines=false
 yay -S pcloud-drive
 ```
 
@@ -949,7 +949,7 @@ yay -S pcloud-drive
 My choice of editor is neovim and sublime text. Please [refer to my previous post](/sublimetext)
 for details on setting up Sublime Text 3. Following is the setup required to install it:
 
-```shell:showLines=false
+```bash:showLines=false
 # Install editors
 yay -S hugo neovim vim
 #

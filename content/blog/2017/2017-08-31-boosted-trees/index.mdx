@@ -145,7 +145,7 @@ aclf.score(x_test, y_test)
 
 Without any parameter tuning, we see an accuracy of 85.54%!
 
-<Callout type='quote'>
+<Callout type='note'>
 
 **Genetic Algorithms for Parameter Search**
 
@@ -373,22 +373,26 @@ version of the algorithm. The details of these can be found
 [here](https://arxiv.org/pdf/1603.02754.pdf). XGBoost is one of the most famous machine learning
 libraries used in on-line machine learning competitions like Kaggle.
 
-> **Regularization**
-> Apart from regular gradient boosted trees, XGBoost provides two additional
-> types of regularization, by adding $L_1$ constraints on number of leaves ($J_b$) and $L_2$
-> constraints on the leaf weights ($\gamma_{jb}$) to the loss function. Mathematically, The loss
-> function is modified as follows (Loss Term at step b):
->
-> $$
-> \sum_{i=1}^{N} L\big( y_i, \hat{F_b}(x_i) \big) + \sum_{k=1}^b \Big (\eta J_k + \frac{1}{2} \lambda \left\lVert \gamma_{jk} \right\rVert^2 \Big )
-> $$
->
-> Here, the second term in the loss function, penalizes the complexity of the model, i.e. decision
-> tree functions.<br/><br/> **Additional Weak Learners**: Apart from decision trees, XGBoost also
-> supports [linear models](https://en.wikipedia.org/wiki/Linear_model) and
-> [DART (decision trees with dropout)](https://proceedings.mlr.press/v38/korlakaivinayak15.pdf) as
-> weak learners. In the DART algorithm, only a subset of available trees are considered in
-> calculating the pseudo-residuals on which the new trees are fit.
+<Callout type='note'>
+
+**Regularization**
+Apart from regular gradient boosted trees, XGBoost provides two additional
+types of regularization, by adding $L_1$ constraints on number of leaves ($J_b$) and $L_2$
+constraints on the leaf weights ($\gamma_{jb}$) to the loss function. Mathematically, The loss
+function is modified as follows (Loss Term at step b):
+
+$$
+\sum_{i=1}^{N} L\big( y_i, \hat{F_b}(x_i) \big) + \sum_{k=1}^b \Big (\eta J_k + \frac{1}{2} \lambda \left\lVert \gamma_{jk} \right\rVert^2 \Big )
+$$
+
+Here, the second term in the loss function, penalizes the complexity of the model, i.e. decision
+tree functions.<br/><br/> **Additional Weak Learners**: Apart from decision trees, XGBoost also
+supports [linear models](https://en.wikipedia.org/wiki/Linear_model) and
+[DART (decision trees with dropout)](https://proceedings.mlr.press/v38/korlakaivinayak15.pdf) as
+weak learners. In the DART algorithm, only a subset of available trees are considered in
+calculating the pseudo-residuals on which the new trees are fit.
+
+</Callout>
 
 XGBoost has many parameters that control the fitting of the model. Below are some of the relevant
 parameters and tuning them would be helpful in the most common cases. _Please note that original
@@ -739,13 +743,13 @@ level-wise. The two approaches can be best visualized in the following illustrat
   <div class="flex-1 p-1 m-1">
     <figure>
     <img src="https://res.cloudinary.com/sadanandsingh/image/upload/v1596309790/boosting/level_wise.png"/>
-    <figcaption class="text-center">Level-wise Splits</figcaption>
+    <figcaption class="text-center text-xs">Level-wise Splits</figcaption>
     </figure>
   </div>
   <div class="flex-1 p-1 m-1">
     <figure>
     <img src="https://res.cloudinary.com/sadanandsingh/image/upload/v1596309790/boosting/leaf_wise.png"/>
-    <figcaption class="text-center">Leaf-wise Splits</figcaption>
+    <figcaption class="text-center text-xs">Leaf-wise Splits</figcaption>
     </figure>
   </div>
 </div>
@@ -767,7 +771,7 @@ an additional parameter needs to be tuned as well.
 
 **num_leaves**: Maximum tree leaves for base learners. Note that since trees are grown depth-first,
 this parameters is independent of the **max_depth** parameter and has to be tuned independently. A
-typical value for starting should be much less than 2<sup>max _depth</sup>.
+typical value for starting should be much less than 2<sup>max_depth</sup>.
 
 When using the scikit-learn API of LightGBM, one should keep in mind that some of the parameter
 names are not standard ones (even though described in the API reference). In particular, I found
