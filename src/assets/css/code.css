@@ -38,42 +38,11 @@ code {
   padding-left: 0.5rem;
 }
 
-.gatsby-highlight pre.prism-code.language-terminal {
-  padding-top: 3em;
-  border: 1px solid #d8d9da;
-  box-shadow: 3px 5px 20px rgba(0, 0, 0, 0.16);
-  background: black;
-  color: white;
-}
-
-.gatsby-highlight pre.prism-code.language-terminal::before {
-  content: '\2022 \2022 \2022';
-  position: absolute;
-  text-align: left;
-  top: 0;
-  left: 0;
-  height: 25px;
-  background: #e1e1e1;
-  border-radius: 0 0 0 0;
-  color: #6c757d;
-  width: 100%;
-  font-size: 28px;
-  letter-spacing: 0.025rem;
-  padding: 0.1rem 0.5rem;
-  position: absolute;
-  margin: 0;
-  line-height: 0;
-  padding: 14px 0;
-  text-indent: 4px;
-  letter-spacing: -10px;
-  font-family: Menlo, Roboto Mono, Courier New, monospace;
-}
-
 pre {
   position: relative;
   direction: ltr;
   font-size: 14px;
-  white-space: pre-wrap;
+  white-space: nowrap !important;
   text-align: left;
   margin: 1em 0;
   padding-top: 2em !important;
@@ -175,7 +144,7 @@ pre {
   padding-left: 0em;
   padding-right: 1em;
   padding-top: 0em;
-  width: 1.2em;
+  width: 2.0em;
   user-select: none;
   opacity: 0.3;
   text-align: center;

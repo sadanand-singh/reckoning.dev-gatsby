@@ -29,7 +29,7 @@ exports.createResolvers = ({ createResolvers }) =>
           return otherPosts
             .map((p) => ({
               ...p,
-              similarity: intersection(p.frontmatter.tags, source.frontmatter.tags).length + 2.0 * stringSimilarity.compareTwoStrings(p.frontmatter.title, source.frontmatter.title) + 1.0 * stringSimilarity.compareTwoStrings(p.frontmatter.description, source.frontmatter.description),
+              similarity: intersection(p.frontmatter.tags, source.frontmatter.tags).length + 3.0 * stringSimilarity.compareTwoStrings(p.frontmatter.title, source.frontmatter.title),
             }))
             .filter(({ similarity }) => similarity !== 0)
             .sort(
@@ -47,20 +47,21 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
   const { createNodeField } = actions
 
   if (node.internal.type === "Mdx") {
-    let value;
+    let slug;
 
     if (Object.prototype.hasOwnProperty.call(node.frontmatter, 'slug')) {
-      value = `/${node.frontmatter.slug}/`
+      slug = `/${node.frontmatter.slug}/`
     }
     else {
-      value = createFilePath({ node, getNode })
+      slug = createFilePath({ node, getNode })
     }
 
     createNodeField({
       name: "slug",
       node,
-      value: `/blog${value}`,
+      value: `/blog${slug}`,
     })
+
   }
 }
 

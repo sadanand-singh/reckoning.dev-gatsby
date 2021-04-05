@@ -3,7 +3,7 @@ title: "Moore's Law and Algorithms - Case of Fibonacci Numbers"
 slug: 'fibonacci-numbers'
 date: 2015-07-12
 published: true
-toc: true
+toc: false
 tags:
   - 'Algorithms'
 ---
@@ -59,7 +59,7 @@ device to calculate say $F_{200}$.
 
 Here is a simple plot of first few Fibonacci numbers:
 
-<img class="w-full max-w-2xl mx-auto" src="https://res.cloudinary.com/sadanandsingh/image/upload/v1567314854/fibonacci_cyif3a.png"/>
+<!-- <img class="w-full max-w-2xl mx-auto" src="https://res.cloudinary.com/sadanandsingh/image/upload/v1567314854/fibonacci_cyif3a.png"/> -->
 
 The most basic algorithm, that comes to mind is a recursive scheme that taps directly into the
 above definition of Fibonacci series.

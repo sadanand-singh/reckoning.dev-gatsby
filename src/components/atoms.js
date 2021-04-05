@@ -27,7 +27,7 @@ export const BlogTitle = ({ children }) => {
   return (
     <h1
       id="introduction"
-      className="text-xl font-bold text-accent tracking-tight"
+      className="text-xl font-bold text-accent txt-md tracking-tight"
     >
       {children}
     </h1>

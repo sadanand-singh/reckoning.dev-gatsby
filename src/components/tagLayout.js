@@ -57,7 +57,7 @@ const TagPage = ({ pageContext, data }) => {
                         slug: node.fields.slug,
                         title: node.frontmatter.title,
                         date: node.frontmatter.date,
-                        description: node.frontmatter.description,
+                        description: node.excerpt,
                         tags: node.frontmatter.tags,
                     }
                     return <Post key={node.id} post={post} />
@@ -97,6 +97,7 @@ export const pageQuery = graphql`
       edges {
         node {
           id
+          excerpt(pruneLength: 140)
           frontmatter {
             title
             date(formatString: "MMMM Do YYYY")

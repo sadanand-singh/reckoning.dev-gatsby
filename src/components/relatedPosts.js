@@ -31,7 +31,7 @@ const RelatedPosts = ({ posts, tags }) => {
                                         {post.frontmatter.title}
                                     </div>
                                     <div className="w-full flex-grow text-sm">
-                                        {post.frontmatter.description}
+                                        {post.excerpt}
                                     </div>
                                 </div>
                             </a>

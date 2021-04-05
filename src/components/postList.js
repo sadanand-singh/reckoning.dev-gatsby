@@ -45,7 +45,7 @@ const PostList = ({ posts, showHeading }) => {
             slug: node.fields.slug,
             title: node.frontmatter.title,
             date: node.frontmatter.date,
-            description: node.frontmatter.description,
+            description: node.excerpt,
             tags: node.frontmatter.tags,
           }
           return <Post key={node.id} post={post} />

@@ -111,10 +111,11 @@ export const pageQuery = graphql`
       excerpt(pruneLength: 140)
       tableOfContents
       timeToRead
-      relatedReads(limit: 8) {
+      relatedReads(limit: 4) {
         fields {
           slug
         }
+        excerpt(pruneLength: 140)
         frontmatter {
           title
           date(formatString: "MMMM Do YYYY")

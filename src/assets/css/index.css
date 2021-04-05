@@ -124,6 +124,11 @@ body {
   text-decoration: none !important;
 }
 
+.txt-md {
+  font-size: 2.25rem !important;
+ line-height: 2.5rem !important;
+}
+
 a.anchor {
   fill: var(--color-text-accent);
   top: 0.65rem !important;
