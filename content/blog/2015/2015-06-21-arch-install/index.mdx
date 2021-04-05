@@ -9,6 +9,10 @@ tags:
   - Guides
 ---
 
+import { Callout } from "../../../../src/components/atoms.js"
+import { ProMark } from "../../../../src/components/atoms.js"
+import { Link } from "gatsby"
+
 You must be thinking - yet another installation guide! There is no dearth of _Installation_ guides
 of Arch on web. So why another one?
 
@@ -16,28 +20,30 @@ With advancements like BTRFS file system, UEFI motherboards and modern _in-devel
 environment like Plasma 5; traditional
 [Arch Wiki](https://wiki.archlinux.org/index.php/Installation_guide) guide and
 [Arch Beginners' Guide](https://wiki.archlinux.org/index.php/Beginners%27_guide) can only be of a
-limited help. After I got [my new desktop](/my-desktop), my goal was to setup it with a _modern_
+limited help. After I got [my new desktop](/blog/my-desktop), my goal was to setup it with a _modern_
 setup. I decided to go with Arch Linux with _btrfs_ file system and Plasma 5 desktop. Coming from
 OSX, I just love how far _linux_ has come in terms of looks - _quite close to OSX!_
 
-::: callout-blue
-**Note:** Please see [my latest post](/complete-setup-arch-gnome) on installing Arch linux with Gnome 3 for
+<Callout type='note'>
+
++ <ProMark /> Please see <Link to='/blog/complete-setup-arch-gnome'>my latest post</Link> on installing Arch linux with Gnome 3 for
 an up to date version of this guide.
-:::
+
+</Callout>
 
 For all of you who love installation videos-
 
-{% youtube "MMkST5IjSjY" %}
+https://youtube.com/watch?v=MMkST5IjSjY
 
 I will cover this in two parts. First in this post, I will install the base system. Then, in a
-[follow up post](/plasma-install-guide), I will discuss details of setting up final working Plasma 5 desktop.
+[follow up post](/blog/plasma-install-guide), I will discuss details of setting up final working Plasma 5 desktop.
 
 ### Initial Setup
 
 Download the latest iso from Arch website and create the uefi usb installation media. I used my mac
 to do this on terminal:
 
-```terminal
+```bash:showLines=false
 
 diskutil list
 diskutil unmountDisk /dev/disk1
@@ -56,7 +62,7 @@ UEFI mode enabled.
 
 To verify you have booted in UEFU mode, run:
 
-```terminal
+```bash:showLines=false
 efivar -l
 ```
 
@@ -72,7 +78,7 @@ after you are done with all the installation.
 
 To setup wifi simply run:
 
-```terminal
+```bash:showLines=false
 wifi-menu
 ```
 
@@ -86,7 +92,7 @@ first session after installation.
 For editing different configurations, I tend to use _vim_. So we will update our package cache and
 install vim.
 
-```terminal
+```bash:showLines=false
 pacman -Syy
 pacman -S vim
 ```
@@ -104,14 +110,14 @@ partitions.
 
 First list your hard drives with the following:
 
-```terminal
+```bash:showLines=false
 lsblk
 cat /proc/partitions
 ```
 
 Assuming, my setup above, now create gpt partitions and format them.
 
-```terminal
+```bash:showLines=false
 dd if=/dev/zero of=/dev/sda bs=1M count=5000
 gdisk /dev/sda
 Found invalid MBR and corrupt GPT. What do you want to do? (Using the
@@ -122,7 +128,7 @@ GPT MAY permit recovery of GPT data.)
 
 Then press 2 to create a blank GPT and start fresh
 
-```terminal
+```bash:showLines=false
 ZAP:
 press x - to go to extended menu
 press z - to zap
@@ -132,7 +138,7 @@ press Y - to delete MBR
 
 It might now kick us out of _gdisk_, so get back into it:
 
-```terminal
+```bash:showLines=false
 gdisk /dev/sda
 
 Command (? for help): m
@@ -163,7 +169,7 @@ _/dev/sdc1_
 
 Now we will format these partitions.
 
-```terminal
+```bash:showLines=false
 mkfs.vfat -F32 /dev/sda1
 mkfs.btrfs -L arch /dev/sda2
 mkfs.btrfs -L data /dev/sdb1
@@ -172,7 +178,7 @@ mkfs.btrfs -L media /dev/sdc1
 
 Now, we will create btrfs subvolumes and mount them properly for installation and final setup.
 
-```terminal
+```bash:showLines=false
 mount /dev/sda2 /mnt
 btrfs subvolume create /mnt/ROOT
 btrfs subvolume create /mnt/home
@@ -190,7 +196,7 @@ umount /mnt
 Now, once the sub-volumes have been created, we will mount them in appropriate locations with
 optimal flags.
 
-```terminal
+```bash:showLines=false
 $SSD_MOUNTS="rw,noatime,nodev,compress=lzo,ssd,discard,
     space_cache,autodefrag,inode_cache"
 HDD_MOUNTS="rw,nosuid,nodev,relatime,space_cache"
@@ -211,14 +217,14 @@ mount -o $EFI_MOUNTS /dev/sda1 /mnt/boot
 
 Now, we will do the actually installation of base packages.
 
-```terminal
+```bash:showLines=false
 pacstrap /mnt base base-devel btrfs-progs
 genfstab -U -p /mnt >> /mnt/etc/fstab
 ```
 
 Edit the /mnt/ect/fstab file to add following /tmp mounts.
 
-```terminal
+```bash:showLines=false
 tmpfs /tmp tmpfs rw,nodev,nosuid 0 0
 tmpfs /dev/shm tmpfs rw,nodev,nosuid,noexec 0 0
 ```
@@ -228,7 +234,7 @@ tmpfs /dev/shm tmpfs rw,nodev,nosuid,noexec 0 0
 
 Finally bind root for installation.
 
-```terminal
+```bash:showLines=false
 arch-chroot /mnt /bin/bash
 ```
 
@@ -236,7 +242,7 @@ arch-chroot /mnt /bin/bash
 
 Here are some basic commands you need to run to get the installation started.
 
-```terminal
+```bash:showLines=false
 pacman -Syy
 pacman -S sudo vim
 vim /etc/locale.gen
@@ -264,7 +270,7 @@ passwd
 
 We will also add _hostname_ to our /etc/hosts file:
 
-```terminal
+```bash:title=/etc/hosts|showLines=false
 vim /etc/hosts
 ...
 127.0.0.1       localhost.localdomain   localhost $HOSTNAME
@@ -280,7 +286,7 @@ menu. It is included with the _systemd_, which is installed on an Arch systems b
 
 Assuming _/boot_ is your boot drive, first run the following command to get started:
 
-```terminal
+```bash:showLines=false
 bootctl --path=/boot install
 ```
 
@@ -292,14 +298,14 @@ boot entry) loaded by the EFI Boot Manager.
 Finally to configure out boot loader, we will need the UUID of out root drive (_/dev/sda2_). You
 can find that by:
 
-```terminal
+```bash:showLines=false
 lsblk -no NAME,UUID /dev/sda2
 ```
 
 Now, make sure that the following two files look as follows, where \$UUID is the value obtained
 from above command:
 
-```terminal
+```bash:showLines=false
 vim /boot/loader/loader.conf
 ...
 timeout 3
@@ -322,14 +328,14 @@ options root=UUID=$UUID rw rootfstype=btrfs rootflags=subvol=ROOT
 
 First setup hostname using _systemd_:
 
-```terminal
+```bash:showLines=false
 hostnamectl set-hostname $HOSTNAME
 ```
 
 Check the "Ethernet controller" entry (or similar) from the `lspci -v` output. It should tell you
 which kernel module contains the driver for your network device. For example:
 
-```terminal
+```bash:showLines=false
 lspci -v
 $
 ...
@@ -348,7 +354,7 @@ $
 
 Next, check that the driver was loaded via `dmesg | grep module_name`. For example:
 
-```terminal
+```bash:showLines=false
 dmesg | grep r8169
 $
 ...
@@ -371,7 +377,7 @@ further assistance.
 
 Get current device names via `/sys/class/net` or `ip link`. For example:
 
-```terminal
+```bash:showLines=false
 ls /sys/class/net
 $
 ...
@@ -393,15 +399,14 @@ _systemd-networkd.service_ and _systemd-resolved.service_.
 For compatibility with resolv.conf, delete or rename the existing file and create the following
 symbolic link:
 
-```terminal
+```bash:showLines=false
 ln -s /usr/lib/systemd/resolv.conf /etc/resolv.conf
 ```
 
 Network configurations are stored as \*.network in _/etc/systemd/network_. We need to create ours
 as follows.:
 
-```terminal
-vim /etc/systemd/network/wired.network
+```bash:title=/etc/systemd/network/wired.network|showLines=false
 $
 ...
 [Match]
@@ -417,7 +422,7 @@ $
 
 Now enable these services:
 
-```terminal
+```bash:showLines=false
 systemctl enable systemd-resolved.service
 systemctl enable systemd-networkd.service
 ```
@@ -428,7 +433,7 @@ Your network should be ready for first use!
 
 Now we are ready for the first boot! Run the following command:
 
-```terminal
+```bash:showLines=false
 exit
 umount -R /mnt
 reboot
@@ -437,4 +442,4 @@ reboot
 Awesome! We are ready to play with our new system. Alas! what you have is just a basic installation
 without any GUI.
 
-Please see my [next post](/plasma-install-guide) for where to go next!
+Please see my [next post](/blog/plasma-install-guide) for where to go next!

@@ -7,6 +7,7 @@ toc: false
 tags:
   - 'Algorithms'
 ---
+import { Callout } from "../../../../src/components/atoms.js"
 
 The world of computers is moving fast. While going through some materials on algorithms, I have
 come across an interesting discussion -enhancements in hardware (cpu) vis-a-vis algorithms.
@@ -15,10 +16,14 @@ One side of the coin is the hardware - the speed of computers. The famous
 [Moore's law](https://www.techradar.com/news/computing/moore-s-law-how-long-will-it-last--1226772)
 states that:
 
-> The complexity for minimum component costs has increased at a rate of roughly a factor of two per
-> year. Certainly over the short term this rate can be expected to continue, if not to increase.
-> Over the longer term, the rate of increase is a bit more uncertain, although there is no reason
-> to believe it will not remain nearly constant for at least 10 years.
+<Callout type='note'>
+
+The complexity for minimum component costs has increased at a rate of roughly a factor of two per
+year. Certainly over the short term this rate can be expected to continue, if not to increase.
+Over the longer term, the rate of increase is a bit more uncertain, although there is no reason
+to believe it will not remain nearly constant for at least 10 years.
+
+</Callout>
 
 In simple words, [Moore's law](https://en.wikipedia.org/wiki/Moore%27s_law) is the observation
 that, over the history of computing hardware, the number of transistors in a dense integrated
@@ -28,12 +33,18 @@ up with this has been challenging. In the context of this discussion, the inhere
 that number of transistors is directly proportional to the speed of computers.
 
 Now, looking at the other side of the coin - speed of algorithms. According to Excerpt from
-[Report to the President and Congress: Designing a Digital Future, December 2010 (page 97)](https://www.whitehouse.gov/sites/default/files/microsites/ostp/pcast-nitrd-report-2010.pdf#97):
+[](https://www.whitehouse.gov/sites/default/files/microsites/ostp/pcast-nitrd-report-2010.pdf#97):
 
-> _Everyone knows Moore’s Law – a prediction made in 1965 by Intel co-­founder Gordon Moore that
-> the density of transistors in integrated circuits would continue to double every 1 to 2 years....
-> in many areas, performance gains due to improvements in algorithms have vastly exceeded even the
-> dramatic performance gains due to increased processor speed._
+<Callout type='quote'>
+
+Everyone knows Moore’s Law – a prediction made in 1965 by Intel co-­founder Gordon Moore that
+the density of transistors in integrated circuits would continue to double every 1 to 2 years....
+in many areas, performance gains due to improvements in algorithms have vastly exceeded even the
+dramatic performance gains due to increased processor speed.
+
+**Source:** [Report](https://www.whitehouse.gov/sites/default/files/microsites/ostp/pcast-nitrd-report-2010.pdf#97)
+
+</Callout>
 
 The gain in computing speed due to algorithms have been simply phenomenal, unprecedented, to say
 the least! Being actively involved with realization of Moore's law, I have been naturally attracted
@@ -52,7 +63,7 @@ F_{n} =
 \end{cases}
 $$
 
-So, first few Fibonacci numbers are: $0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144 \ldots $ These
+So, first few Fibonacci numbers are: $0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144 \ldots$ These
 numbers grow _almost_ as fast as powers of 2: for example, $F_{30}$ is over a million, and
 $F_{100}$ is 21 digits long! In general, $F_n \approx 2^{0.694n}$ Clearly, we need a computing
 device to calculate say $F_{200}$.
