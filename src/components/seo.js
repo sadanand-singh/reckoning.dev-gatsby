@@ -49,7 +49,7 @@ function SEO({ description, lang, meta, title, blog, ogImage }) {
     title: title || defaultTitle,
     titleTemplate: title
       ? `%s | ${defaultTitle}`
-      : `${defaultTitle} | Game and Javascript Developer`,
+      : `${defaultTitle} | ML Algorithms and Research Papers`,
     description: description || defaultDescription,
     image: `${siteUrl}${blog
       ? ogImage || getSrc(blogImage)

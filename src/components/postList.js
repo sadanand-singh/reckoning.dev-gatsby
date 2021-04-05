@@ -35,7 +35,7 @@ const PostList = ({ posts, showHeading }) => {
   return (
     <section className="">
       {showHeading && (
-        <h2 className="mt-64 font-normal text-accent tracking-widestest">
+        <h2 className="mt-24 font-normal text-accent tracking-widestest">
           LATEST WRITINGS
         </h2>
       )}

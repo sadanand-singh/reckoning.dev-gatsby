@@ -40,11 +40,19 @@ const IndexPage = () => {
     <Layout activePage="/">
       <Seo />
       <div className="mt-12 flex flex-col-reverse lg:flex-row items-center lg:justify-between lg:space-x-6">
-        <h1 className="mt-12 lg:mt-0 max-w-3xl text-3xl sm:text-4xl text-primary font-semibold sm:text-left md:text-center lg:text-left">
-          Hi, I’m Jeff.
-        <br className="mb-6 lg:hidden" /> I’m an experienced game developer with
-        deep interest in modern web development.
-      </h1>
+        <div>
+          <h1 className="mt-12 mb-12 lg:mt-0 max-w-3xl text-3xl sm:text-4xl text-primary font-semibold sm:text-left md:text-center lg:text-left">
+            Hi There!
+        <br className="mb-6" />
+            <br className="mb-6" />
+            <span className="mt-12 lg:mt-0 max-w-3xl text-xl sm:text-xl text-primary font-semibold sm:text-left md:text-center lg:text-left">
+              This is my digital garden for all things related to deep learning, machine learning, algorithms, maths, food and everything else!
+              <br /><br />I am a
+              Principal Research Scientist <a href="https://whiterabbit.ai" className="text-accent hover:text-accent hover:underline no-und" target="_blank" rel="noopener noreferrer">@whiterabbit.ai,</a> Photography Enthusiast, and a Foodie!
+        </span>
+          </h1>
+        </div>
+
         <div className="relative">
           <Blob />
           <div className="absolute w-full h-full top-0 flex items-center justify-center">
