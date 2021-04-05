@@ -8,12 +8,17 @@ module.exports = {
     twitterUsername: `@reckoning.dev`,
   },
   plugins: [
-    // {
-    //   resolve: `gatsby-plugin-google-analytics`,
-    //   options: {
-    //     trackingId: process.env.GOOGLE_ANALYTICS_TRACKING_ID,
-    //   },
-    // },
+    {
+      resolve: "gatsby-plugin-google-tagmanager",
+      options: {
+        id: process.env.GOOGLE_TAGMANAGER_ID,
+
+        // Include GTM in development.
+        //
+        // Defaults to false meaning GTM will only be loaded in production.
+        includeInDevelopment: true,
+      },
+    },
     `gatsby-plugin-react-helmet`,
     {
       resolve: `gatsby-source-filesystem`,
@@ -30,6 +35,7 @@ module.exports = {
       },
     },
     "gatsby-plugin-image",
+    `gatsby-plugin-catch-links`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     {
@@ -67,7 +73,7 @@ module.exports = {
       resolve: `gatsby-plugin-env-variables`,
       options: {
         whitelist: [
-          "GATSBY_GOOGLE_SITE_VERIFICATION, GOOGLE_ANALYTICS_TRACKING_ID, DEV_ENV",
+          "GATSBY_GOOGLE_SITE_VERIFICATION, GOOGLE_TAGMANAGER_ID, DEV_ENV",
         ],
       },
     },
@@ -75,23 +81,27 @@ module.exports = {
       resolve: `gatsby-plugin-mdx`,
       options: {
         extensions: [`.mdx`, `.md`],
+        remarkPlugins: [
+          require('remark-math'),
+          require('remark-html-katex'),
+        ],
         gatsbyRemarkPlugins: [
           {
             resolve: `gatsby-remark-images`,
             options: {
-              maxWidth: 590,
+              maxWidth: 960,
+              quality: 90,
+              linkImagesToOriginal: false,
             },
           },
+          { resolve: `gatsby-remark-numbered-footnotes` },
           {
             resolve: "gatsby-remark-autolink-headers",
             options: {
               elements: [`h2`, `h3`],
             },
           },
-          {
-            resolve: "gatsby-remark-prismjs",
-            options: {},
-          },
+          `gatsby-remark-embedder`,
         ],
       },
     },

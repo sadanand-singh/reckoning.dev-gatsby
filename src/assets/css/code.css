@@ -1,125 +1,183 @@
-/**
- * Dracula Theme originally by Zeno Rocha [@zenorocha]
- * https://draculatheme.com/
- *
- * Ported for PrismJS by Albert Vallverdu [@byverdu]
- */
-
-@import "./index.css";
-
-code[class*="language-"],
-pre[class*="language-"] {
-  color: var(--color-code-text);
-  background: none;
-  /* text-shadow: 0 0.5px rgba(0, 0, 0, 0.3); */
-  font-family: Menlo, Monaco, Consolas, "Liberation Mono", "Courier New",
-    monospace;
-  text-align: left;
-  white-space: pre;
-  word-spacing: normal;
-  word-break: normal;
-  word-wrap: normal;
-  line-height: 1.5;
-  -moz-tab-size: 4;
-  -o-tab-size: 4;
-  tab-size: 4;
-  -webkit-hyphens: none;
-  -moz-hyphens: none;
-  -ms-hyphens: none;
-  hyphens: none;
-}
-
-/* Code blocks */
-pre[class*="language-"] {
-  padding: 1em;
-  margin: 0.5em 0;
-  overflow: auto;
-  border-radius: 0.3em;
-}
-
-:not(pre) > code[class*="language-"],
-pre[class*="language-"] {
-  background: var(--color-code-background);
+pre,
+code {
+  font-family: Menlo, Roboto Mono, Courier New, monospace;
+  font-size: 14px;
 }
 
 /* Inline code */
-:not(pre) > code[class*="language-"] {
-  padding: 0.2em 0.3em;
-  border-radius: 0.2em;
-  white-space: normal;
+
+:not(pre) > code[class*='language-'] {
+  padding: 3px 5px;
+  color: #111111;
 }
 
-.token.comment,
-.token.prolog,
-.token.doctype,
-.token.cdata {
-  color: var(--color-code-comment);
+:not(pre) > code {
+  padding: 3px 5px;
+  border: none;
+  font-family: Menlo, 'Roboto Mono', Courier New, monospace;
+  font-weight: 400;
+  color: #111111;
+  border-radius: 4px;
+  background: rgba(0, 0, 0, 0.3);
 }
 
-.token.punctuation {
-  color: var(--color-code-punctuation);
-}
-
-.namespace {
-  opacity: 0.7;
-}
-
-.token.property,
-.token.tag,
-.token.constant,
-.token.symbol,
-.token.deleted {
-  color: var(--color-code-const);
-}
-
-.token.boolean,
-.token.number {
-  color: var(--color-code-bool);
-}
-
-.token.selector,
-.token.attr-name,
-.token.string,
-.token.char,
-.token.builtin,
-.token.inserted {
-  color: var(--color-code-string);
-}
-
-.token.operator,
-.token.entity,
-.token.url,
-.language-css .token.string,
-.style .token.string,
-.token.variable {
-  color: var(--color-code-var);
-}
-
-.token.atrule,
-.token.attr-value,
-.token.function,
-.token.class-name {
-  color: var(--color-code-func);
-}
-
-.token.keyword {
-  color: var(--color-code-keyword);
-}
-
-.token.regex,
-.token.important {
-  color: var(--color-code-regex);
-}
-
-.token.important,
-.token.bold {
+.code-title {
+  background: #404040;
+  padding: 0.5rem 1rem 0.75rem;
+  font-size: 1rem;
+  color: #f3f7f9;
   font-weight: bold;
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+  margin-bottom: -2.2rem;
 }
 
-.token.italic {
-  font-style: italic;
+.line-highlight {
+  border-left: 4px solid rgb(2, 155, 206);
+  margin-left: -0.5em;
+  padding-left: 0.5rem;
 }
 
-.token.entity {
-  cursor: help;
+.gatsby-highlight pre.prism-code.language-terminal {
+  padding-top: 3em;
+  border: 1px solid #d8d9da;
+  box-shadow: 3px 5px 20px rgba(0, 0, 0, 0.16);
+  background: black;
+  color: white;
+}
+
+.gatsby-highlight pre.prism-code.language-terminal::before {
+  content: '\2022 \2022 \2022';
+  position: absolute;
+  text-align: left;
+  top: 0;
+  left: 0;
+  height: 25px;
+  background: #e1e1e1;
+  border-radius: 0 0 0 0;
+  color: #6c757d;
+  width: 100%;
+  font-size: 28px;
+  letter-spacing: 0.025rem;
+  padding: 0.1rem 0.5rem;
+  position: absolute;
+  margin: 0;
+  line-height: 0;
+  padding: 14px 0;
+  text-indent: 4px;
+  letter-spacing: -10px;
+  font-family: Menlo, Roboto Mono, Courier New, monospace;
+}
+
+pre {
+  position: relative;
+  direction: ltr;
+  font-size: 14px;
+  white-space: pre-wrap;
+  text-align: left;
+  margin: 1em 0;
+  padding-top: 2em !important;
+  padding-bottom: 1em;
+  padding-left: 1em;
+  overflow: auto;
+  border-radius: 3px;
+  word-spacing: normal;
+  word-break: normal;
+  line-height: 1.7;
+  font-weight: 400;
+  margin: 2rem 0;
+  tab-size: 2;
+  hyphens: none;
+  border-radius: 0px 0px 4px 4px !important;
+  -webkit-font-smoothing: antialiased;
+  font-family: Menlo, Roboto Mono, Courier New, monospace;
+}
+
+.gatsby-highlight {
+  position: relative;
+  -webkit-overflow-scrolling: touch;
+}
+.gatsby-highlight pre[class*='prism-code language-'] {
+  -webkit-overflow-scrolling: touch;
+}
+.gatsby-highlight pre[class*='prism-code language-']::before {
+  background: black;
+  border-radius: 0 0 0.25rem 0.25rem;
+  margin-bottom: 25em;
+  color: white;
+  font-size: 12px;
+  letter-spacing: 0.025rem;
+  padding: 0.1rem 0.5rem;
+  position: absolute;
+  left: 1rem;
+  text-align: left;
+  text-transform: uppercase;
+  top: 0;
+}
+.gatsby-highlight pre[class='prism-code language-python']::before {
+  content: 'python';
+  background: #005a9c;
+  color: white;
+}
+.gatsby-highlight pre[class='prism-code language-json']::before {
+  content: 'json';
+  background: #f7df1e;
+  color: black;
+}
+.gatsby-highlight pre[class='prism-code language-bash']::before {
+  content: 'bash';
+  background: #839192;
+  color: black;
+}
+.gatsby-highlight pre[class='prism-code language-js']::before {
+  content: 'js';
+  background: #f7df1e;
+  color: black;
+}
+.gatsby-highlight pre[class='prism-code language-javascript']::before {
+  content: 'js';
+  background: #f7df1e;
+  color: black;
+}
+.gatsby-highlight pre[class='prism-code language-html']::before {
+  content: 'html';
+  background: #48c9b0;
+  color: white;
+}
+.gatsby-highlight pre[class='prism-code language-css']::before {
+  content: 'css';
+  background: #5499c7;
+  color: white;
+}
+.gatsby-highlight pre[class='prism-code language-lua']::before {
+  content: 'lua';
+  background: #0b5345;
+  color: white;
+}
+.gatsby-highlight pre[class='prism-code language-yaml']::before {
+  content: 'yaml';
+  background: #e74c3c;
+  color: white;
+}
+.gatsby-highlight pre[class='prism-code language-md']::before {
+  content: 'md';
+  background: #a569bd;
+  color: white;
+}
+.gatsby-highlight pre[class='prism-code language-markdown']::before {
+  content: 'markdown';
+  background: #a569bd;
+  color: white;
+}
+
+.line-number-style {
+  display: inline-block;
+  padding-left: 0em;
+  padding-right: 1em;
+  padding-top: 0em;
+  width: 1.2em;
+  user-select: none;
+  opacity: 0.3;
+  text-align: center;
+  position: relative;
 }

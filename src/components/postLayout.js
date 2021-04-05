@@ -3,17 +3,31 @@ import { graphql } from "gatsby"
 import { MDXProvider } from "@mdx-js/react"
 import { MDXRenderer } from "gatsby-plugin-mdx"
 import { getSrc } from "gatsby-plugin-image"
+import { preToCodeBlock } from 'mdx-utils'
 import { Link } from "gatsby"
 import Layout from "./layout"
 import Seo from "./seo"
+import Code from "./code"
 import { BlogTitle, BlogTitleInfo, ExtLink } from "./atoms"
 import Newsletter from "./newsletter"
 import Toc from "./toc"
 import RelatedPosts from "./relatedPosts"
 
+require(`katex/dist/katex.min.css`)
+
 const shortcodes = {
   ExtLink,
   Link,
+  pre: preProps => {
+    const props = preToCodeBlock(preProps);
+    // if there's a codeString and some props, we passed the test
+    if (props) {
+      return <Code {...props} />;
+    }
+    // it's possible to have a pre without a code in it
+    return <pre {...preProps} />;
+  },
+  code: Code,
 }
 
 const PostLayout = ({ pageContext, data: { mdx, ogImage } }) => {

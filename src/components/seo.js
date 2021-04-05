@@ -114,6 +114,10 @@ function SEO({ description, lang, meta, title, blog, ogImage }) {
           name: `twitter:description`,
           content: seo.description,
         },
+        {
+          name: `google-site-verification`,
+          content: process.env.GATSBY_GOOGLE_SITE_VERIFICATION,
+        }
       ].concat(meta)}
     >
       <script type="application/ld+json">
