@@ -3,6 +3,7 @@ title: Welcome to My Blog
 date: 2014-08-21
 published: true
 toc: false
+description: "My very first blog post in this site"
 tags:
   - Blog
   - Web

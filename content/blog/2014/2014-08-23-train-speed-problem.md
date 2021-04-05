@@ -4,6 +4,7 @@ slug: 'train-speed-problem'
 date: 2014-08-23
 published: true
 toc: false
+description: "A simple maths problem based on middle school algebra and arithmetics."
 tags:
   - Algorithms
 ---

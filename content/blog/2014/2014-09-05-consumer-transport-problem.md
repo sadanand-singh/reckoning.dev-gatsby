@@ -3,6 +3,7 @@ title: 'Puzzle 2: Consumer Transport Problem'
 slug: 'consumer-transport-problem'
 date: 2014-09-05
 published: true
+description: "A simple puzzle based on algebra and arithmetics."
 toc: false
 tags:
   - Algorithms
