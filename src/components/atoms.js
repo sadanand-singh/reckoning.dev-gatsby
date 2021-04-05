@@ -112,7 +112,7 @@ export const ExtLink = ({ children, link, newTab }) => {
 
 export const ProjectLink = ({ label, url }) => {
   return (
-    <span className="font-medium text-tertiary hover:text-accent">
+    <span key={url} className="font-medium text-tertiary hover:text-accent">
       <a href={url} target="_blank" rel="noopener noreferrer">
         {label}
         <svg

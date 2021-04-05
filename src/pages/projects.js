@@ -13,7 +13,7 @@ const Projects = () => {
       <Seo title="Projects" />
       <Heading>Projects</Heading>
       <p className="-mt-3 mb-8 text-tertiary">
-        Collection of web and game development side projects.
+        Collection of DL, ML and Web development side projects.
       </p>
       <ProjectGrid />
       <div className="mt-12 flex flex-col space-y-0">

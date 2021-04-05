@@ -1,48 +1,52 @@
 const data = [
   {
-    label: "Game Development Skills",
+    label: "AI and Computer Vision",
     description:
-      "Skills I acquired during 5+ years of being in game development industry",
+      "Skills I acquired during 5+ years of being in tech industry",
     categories: [
       {
-        title: "Unreal Engine 4 Game Development",
+        title: "Deep Learning / Machine Learning",
         skills: [
-          "C++ and Blueprint Programming",
-          "UMG and Complex UI Systems",
-          "Multiplayer and Network Programming",
-          "3rd Party Library and API Integration",
-          "Online Services Integration",
+          "PyTorch, Tensorflow and Keras",
+          "Self Supervised Learning",
+          "GANs & Autoencoders",
+          "Mlflow Development",
+          "Tree-based Models",
+          "Support Vector Machines",
+          "Clustering Algorithms",
+          "Mixture Models",
         ],
       },
       {
-        title: "Unity Game Development",
+        title: "Medical Imaging",
         skills: [
-          "C# Programming",
-          "Complex System Design and Architecture",
-          "Complex UI Systems",
-          "Editor Tooling",
-          "3rd Party Library and API Integration",
+          "Breast Screening",
+          "Tomo Synthesis Images",
+          "Anamoly Detection",
+          "Object Detection with Detectron2",
+          "Medical Imaging In-painting via GANs",
+          "Trust in Medical AI systems",
+          "Explainatory Models",
         ],
       },
     ],
   },
   {
     label: "Web Development Skills",
-    description: "Skills I learned during the quarantine",
+    description: "Skills I learned during my free time and speciall during the quarantine",
     categories: [
       {
         title: "Front-end Development",
         skills: [
-          "React: CRA, Gatsby, and Next",
+          "React: Gatsby",
           "Tailwind CSS and Component Libraries",
-          "Jest & React Testing Library",
-          "Design Systems w/Storybook",
+          "Jquery",
           "SEO-friendly and Accessible Designs",
         ],
       },
       {
         title: "Backend Development",
-        skills: ["Express", "Socket.io", "Firebase and Firestore"],
+        skills: ["MongoDB", "Postgres", "Flask"],
       },
     ],
   },
