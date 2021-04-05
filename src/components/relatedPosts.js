@@ -30,7 +30,7 @@ const RelatedPosts = ({ posts, tags }) => {
                                     <div className="w-full font-semibold hover:text-accent mb-1">
                                         {post.frontmatter.title}
                                     </div>
-                                    <div className="w-full flex-grow ">
+                                    <div className="w-full flex-grow text-sm">
                                         {post.frontmatter.description}
                                     </div>
                                 </div>

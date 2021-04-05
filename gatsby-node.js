@@ -2,6 +2,7 @@ const path = require("path")
 const kebabCase = require(`lodash.kebabcase`)
 const { createFilePath } = require("gatsby-source-filesystem")
 const intersection = require('lodash.intersection')
+var stringSimilarity = require("string-similarity");
 
 exports.createResolvers = ({ createResolvers }) =>
   createResolvers({
@@ -28,7 +29,7 @@ exports.createResolvers = ({ createResolvers }) =>
           return otherPosts
             .map((p) => ({
               ...p,
-              similarity: intersection(p.frontmatter.tags, source.frontmatter.tags).length,
+              similarity: intersection(p.frontmatter.tags, source.frontmatter.tags).length + 2.0 * stringSimilarity.compareTwoStrings(p.frontmatter.title, source.frontmatter.title) + 1.0 * stringSimilarity.compareTwoStrings(p.frontmatter.description, source.frontmatter.description),
             }))
             .filter(({ similarity }) => similarity !== 0)
             .sort(
