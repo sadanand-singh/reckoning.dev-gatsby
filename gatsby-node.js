@@ -1,12 +1,59 @@
 const path = require("path")
 const kebabCase = require(`lodash.kebabcase`)
 const { createFilePath } = require("gatsby-source-filesystem")
+const intersection = require('lodash.intersection')
+
+exports.createResolvers = ({ createResolvers }) =>
+  createResolvers({
+    Mdx: {
+      relatedReads: {
+        type: '[Mdx!]',
+        args: { limit: 'Int' },
+        async resolve(source, args, ctx, info) {
+          let limit = args.limit;
+          let otherPosts = await ctx.nodeModel.runQuery({
+            firstOnly: false,
+            type: `Mdx`,
+            query: {
+              filter: {
+                fileAbsolutePath: { regex: 'content/blog/' }, // only posts
+                fields: { slug: { ne: source.fields.slug } }, // not current article
+                frontmatter: {
+                  published: { eq: true }, // published only posts
+                },
+              },
+            },
+          })
+
+          return otherPosts
+            .map((p) => ({
+              ...p,
+              similarity: intersection(p.frontmatter.tags, source.frontmatter.tags).length,
+            }))
+            .filter(({ similarity }) => similarity !== 0)
+            .sort(
+              (a, b) =>
+                b.similarity - a.similarity ||
+                b.frontmatter.date.localeCompare(a.frontmatter.date)
+            )
+            .slice(0, limit)
+        },
+      },
+    },
+  })
 
 exports.onCreateNode = ({ node, actions, getNode }) => {
   const { createNodeField } = actions
 
   if (node.internal.type === "Mdx") {
-    const value = createFilePath({ node, getNode })
+    let value;
+
+    if (Object.prototype.hasOwnProperty.call(node.frontmatter, 'slug')) {
+      value = `/${node.frontmatter.slug}/`
+    }
+    else {
+      value = createFilePath({ node, getNode })
+    }
 
     createNodeField({
       name: "slug",

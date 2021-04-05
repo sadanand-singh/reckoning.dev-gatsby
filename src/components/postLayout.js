@@ -9,6 +9,7 @@ import Seo from "./seo"
 import { BlogTitle, BlogTitleInfo, ExtLink } from "./atoms"
 import Newsletter from "./newsletter"
 import Toc from "./toc"
+import RelatedPosts from "./relatedPosts"
 
 const shortcodes = {
   ExtLink,
@@ -72,6 +73,9 @@ const PostLayout = ({ pageContext, data: { mdx, ogImage } }) => {
           )}
         </div>
       </div>
+      {mdx.relatedReads.length !== 0 && (
+        <RelatedPosts posts={mdx.relatedReads} tags={mdx.frontmatter.tags} />
+      )}
       <Newsletter />
     </Layout>
   )
@@ -93,6 +97,17 @@ export const pageQuery = graphql`
       excerpt(pruneLength: 140)
       tableOfContents
       timeToRead
+      relatedReads(limit: 8) {
+        fields {
+          slug
+        }
+        frontmatter {
+          title
+          date(formatString: "MMMM Do YYYY")
+          tags
+          description
+        }
+      }
     }
     ogImage: file(relativePath: { eq: $ogImageSlug }) {
       childImageSharp {
