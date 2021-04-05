@@ -15,11 +15,87 @@ import { ProMark } from "../../../src/components/atoms.js"
 
 ![Footer issue](footer-gap.png)
 
-I experienced this footer problem before in this site, but I got away with it because there are no pages that have no content to make this happen 😆. But in this <ExtLink link="https://hn.jeffjadulco.com">side project</ExtLink> of mine (which is a Hacker News reader), there are times when a post don't have no comments yet, and I have no control over it.
+I experienced this footer problem before in this site, but I got away with it because there are no pages that have no content to make this happen 😆. But in this <ExtLink link="https://hn.jeffjadulco.com">side project</ExtLink> of mine (which is a Hacker News reader), there are times when a post don't have no comments yet, and I have no control over it. test code `int(variable) = 5`
+
+Some long sentence. [^footnote]
+
+[^footnote]: Test, [Link](https://google.com).
+
+
+```js react-live
+const Wrapper = ({ children }) => (
+  <div
+    style={{
+      background: 'papayawhip',
+      width: '100%',
+      padding: '2rem'
+    }}
+  >
+    {children}
+  </div>
+);
+
+const Title = () => (
+  <h2 style={{ color: 'tomato', textAlign: 'center' }}>
+    Hello World!
+    <br />
+    This is reckoning.dev! welcoming you!
+  </h2>
+);
+
+render(
+  <Wrapper>
+    <Title />
+  </Wrapper>
+);
+```
+
+
+test me as well
+
+
+
+```python:title=./src/components/Code.js|showLines=true {1-3,12-17,5}
+class VGG16BN(BaseModel):
+    def __init__(self, num_classes=2):
+        super().__init__()
+        self.features = vgg16_bn(pretrained=True).features
+        self.avgpool = nn.AdaptiveAvgPool2d(7)
+        self.classifier = nn.Sequential(
+            nn.Linear(512 * 7 * 7, 128), nn.ReLU(True), nn.Dropout(), nn.Linear(128, num_classes)
+        )
+        # freeze all layers of feature extractor
+        for param in self.features.parameters():
+            param.requires_grad = False
+        self._initialize_classifier_weights()
+
+    def _initialize_classifier_weights(self):
+        for m in self.classifier.modules():
+            if isinstance(m, nn.Conv2d):
+                nn.init.kaiming_normal_(m.weight, mode='fan_out', nonlinearity='relu')
+                if m.bias is not None:
+                    nn.init.constant_(m.bias, 0)
+            elif isinstance(m, nn.BatchNorm2d):
+                nn.init.constant_(m.weight, 1)
+                nn.init.constant_(m.bias, 0)
+            elif isinstance(m, nn.Linear):
+                nn.init.normal_(m.weight, 0, 0.01)
+                nn.init.constant_(m.bias, 0)
+
+    def forward(self, x):
+        x = self.features(x)
+        x = self.avgpool(x)
+        x = x.view(x.size(0), -1)
+        return self.classifier(x)
+```
 
 I've looked for solutions over the internet and this is the most clever solution I saw: using `flexbox`.
 
-```html
+$$
+a^2 + b^2 = c^2
+$$
+
+```html {numberLines}
 <html>
   <body>
     <header>Header</header>
@@ -30,6 +106,7 @@ I've looked for solutions over the internet and this is the most clever solution
 ```
 
 ```css
+
 body {
 	display: flex;
 	flex-direction: column;
