@@ -94,7 +94,7 @@ const Blog = () => {
         edges {
           node {
             id
-            excerpt(pruneLength: 140)
+            excerpt(pruneLength: 100)
             frontmatter {
               title
               date(formatString: "MMMM Do YYYY")
