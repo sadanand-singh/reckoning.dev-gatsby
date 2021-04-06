@@ -35,7 +35,7 @@ const PostLayout = ({ pageContext, data: { mdx, ogImage } }) => {
   const nextArticle = next && (
     <div className="flex-1 text-right no-und">
       <a className="no-und" rel="prev" href={next.fields.slug}>
-        <span className="border p-2 mr-2 no-und"> Next → </span>
+        <span className="border p-2 mr-2 no-und"> Previous → </span>
       </a>
     </div>
   )
@@ -43,7 +43,7 @@ const PostLayout = ({ pageContext, data: { mdx, ogImage } }) => {
   const prevArticle = previous && (
     <div className="flex-1  no-und">
       <a className="no-und" rel="next" href={previous.fields.slug}>
-        <span className="border p-2 mr-2 "> ← Previous </span>
+        <span className="border p-2 mr-2 "> ← Next </span>
       </a>
     </div>
   )

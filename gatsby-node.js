@@ -32,11 +32,12 @@ exports.createResolvers = ({ createResolvers }) =>
               similarity: intersection(p.frontmatter.tags, source.frontmatter.tags).length + 3.0 * stringSimilarity.compareTwoStrings(p.frontmatter.title, source.frontmatter.title),
             }))
             .filter(({ similarity }) => similarity !== 0)
-            .sort(
-              (a, b) =>
-                b.similarity - a.similarity ||
-                b.frontmatter.date.localeCompare(a.frontmatter.date)
-            )
+            .sort((a, b) => {
+              const interval_a = Math.abs(new Date(a.frontmatter.date) - new Date(source.frontmatter.date));
+              const interval_b = Math.abs(new Date(b.frontmatter.date) - new Date(source.frontmatter.date));
+
+              return b.similarity - a.similarity || interval_a - interval_b;
+            })
             .slice(0, limit)
         },
       },

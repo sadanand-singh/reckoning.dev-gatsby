@@ -69,7 +69,7 @@ Ubuntu 20.04.
 
     Configure `phonesim` by adding the following lines to `/etc/ofono/phonesim.conf`:
 
-    ```
+    ```bash
     [phonesim]
     Driver=phonesim
     Address=127.0.0.1
@@ -88,7 +88,7 @@ Ubuntu 20.04.
     create the file `/etc/systemd/system/ofono-phonesim.service`(as root) with the following
     contents:
 
-    ```
+    ```bash
     [Unit]
     Description=Run ofono-phonesim in the background
 
@@ -117,8 +117,7 @@ Ubuntu 20.04.
     depends on the above `ofono-phonesim` `systemd` unit. Put the following contents
     in `/etc/systemd/system/phonesim-enable-modem.service`:
 
-    ```
-
+    ```bash:title=/etc/systemd/system/phonesim-enable-modem.service
     [Unit]
     Description=Enable and online phonesim modem
     Requires=ofono-phonesim.service

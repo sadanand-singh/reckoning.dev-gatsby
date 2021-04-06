@@ -18,7 +18,7 @@ code {
   font-weight: 400;
   color: #111111;
   border-radius: 4px;
-  background: rgba(0, 0, 0, 0.3);
+  background: rgba(0, 0, 0, 0.05);
 }
 
 .code-title {
