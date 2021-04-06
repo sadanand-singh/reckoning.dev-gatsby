@@ -11,58 +11,41 @@ const About = _ => {
       <Seo title="About" />
       <div classNameName="container">
         <article classNameName="prose-lg">
-          <h2>About Me</h2>
+          <h2 className="relative mt-12 mb-3 text-2xl font-bold text-accent">Bio </h2>
           <p>
-            I'm Jeff Jadulco, I work full-time as a game programmer at{" "}
-            <ExtLink link="https://secret6.com/">Secret 6, Inc</ExtLink>. In my
-            free time, I study front-end development with React. My goal is to
-            write useful apps and contribute to open source projects while
-            working a full-time job.
+            Hi, I’m <strong>Sadanand Singh</strong>. I work at{" "}
+            <ExtLink link="https://whiterabbit.ai/">Whiterabbit.ai.</ExtLink>{" "}
+            I build AI models in medical imaging and enjoy working with Algorithms, Python/C++, and medical and biological data. My background is in computational physics, numerical modeling and optimization and software design. I have a PhD in computational physics/chemical engineering focusing on computational models of nano-materials and bio-molecules.
+            </p>
+          <br />
+          <p>
+            My active area of research is in applications of deep learning and computer vision in medical imaging and in the radiology business. I am specifically interested in designing AI models that are explainable and tractable.
           </p>
 
-          <h2 id="publications" class="relative mt-12 mb-3 text-2xl font-bold text-accent">
+          <h2 className="relative mt-6 mb-2 text-lg font-semibold text-primary"> Research Questions </h2>
+          <span>
+            My research contributions have sought to address
+            <span className="italic">variants</span>
+            of these questions:
+          </span>
+          <ul className="p-3  mt-1 mb-1 list-disc list-inside">
+            <li className="mb-1"> How do users make decisions as they use technology tools? What are the implications for interface design?</li>
+            <li className="mb-1"> How can we be build tools that help non-experts <span className="italic">understand</span> machine learning?</li>
+            <li className="mb-1"> How can we apply advances in ML in designing better user (read <span className="italic font-semibold"> product </span> ) experiences?</li>
+          </ul>
+
+          <h2 className="relative mt-6 mb-3 text-2xl font-bold text-accent">CV</h2>
+          <div> A copy of my CV can be{" "}
+            <InlinePageLink to="/cv">seen here</InlinePageLink>{" "}.
+            <div className="text-sm mt-1">
+              This file was last updated on Tue March 30 2021.
+            </div>
+          </div>
+
+          <h2 id="publications" className="relative mt-12 mb-3 text-2xl font-bold text-accent">
             Publications
           </h2>
           <PublicationsGrid />
-
-          <h2>Why make this website?</h2>
-          <p>
-            I made this website to learn what actually goes into web
-            development. From planning, design, development, launch, and
-            maintenance. For sure there are other things that I have yet to
-            encounter, and I’m ready to learn them.
-          </p>
-          <p>
-            This also serves a motivation for me to continue making projects
-            because now I finally have a place to showcase them.
-          </p>
-          <h2>Why write a blog?</h2>
-          <p>
-            My{" "}
-            <InlinePageLink to="/blog/welcome">first blog post</InlinePageLink>{" "}
-            explained it. I'd be happy if you read it :)
-          </p>
-          <h2>What else?</h2>
-          <p>
-            When I’m not programming, I endlessly browse Reddit (
-            <ExtLink link="https://www.reddit.com/r/gamedev/">
-              /r/gamedev
-            </ExtLink>
-            ,{" "}
-            <ExtLink link="https://www.reddit.com/r/webdev/">/r/webdev</ExtLink>
-            ,{" "}
-            <ExtLink link="https://www.reddit.com/r/animalsbeingderps/">
-              /r/animalsbeingderps
-            </ExtLink>
-            ). I also love watching{" "}
-            <ExtLink link="https://letterboxd.com/jeffjadulco/">movies</ExtLink>{" "}
-            and listening to{" "}
-            <ExtLink link="https://open.spotify.com/user/jeffjads">
-              awesome music
-            </ExtLink>
-            . You can catch me playing games sometimes, I play as xKore, xKored,
-            or xKoreddd.
-          </p>
         </article>
       </div>
       <Contact />
