@@ -99,6 +99,7 @@ const Blog = () => {
               title
               date(formatString: "MMMM Do YYYY")
               published
+              featured
               tags
               description
             }

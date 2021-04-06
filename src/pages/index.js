@@ -15,8 +15,8 @@ const IndexPage = () => {
     query IndexPageQuery {
       allMdx(
         sort: { fields: frontmatter___date, order: DESC }
-        filter: { frontmatter: { published: { eq: true } } }
-        limit: 6
+        filter: { frontmatter: { tags: { in: ["Deep Learning", "Machine Learning", "Algorithms"] }, published: { eq: true } } }
+        limit: 5
       ) {
         edges {
           node {
@@ -26,6 +26,7 @@ const IndexPage = () => {
               title
               date(formatString: "MMMM Do YYYY")
               published
+              featured
               tags
               description
             }
