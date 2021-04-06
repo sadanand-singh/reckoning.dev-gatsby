@@ -11,7 +11,9 @@ import Code from "./code"
 import { BlogTitle, BlogTitleInfo, ExtLink } from "./atoms"
 import Newsletter from "./newsletter"
 import Toc from "./toc"
+import Comments from "./comments"
 import RelatedPosts from "./relatedPosts"
+
 
 require(`katex/dist/katex.min.css`)
 
@@ -31,6 +33,9 @@ const shortcodes = {
 }
 
 const PostLayout = ({ pageContext, data: { mdx, ogImage } }) => {
+  const twitterShare = `http://twitter.com/share?text=${encodeURIComponent(
+    mdx.frontmatter.title,
+    )}&url=https://reckoning.dev/${mdx.fields.slug}/&via=reckoningdev`;
   const { next, previous } = pageContext;
   const nextArticle = next && (
     <div className="flex-1 text-right no-und">
@@ -74,6 +79,7 @@ const PostLayout = ({ pageContext, data: { mdx, ogImage } }) => {
               {prevArticle}
               {nextArticle}
             </div>
+            <Comments twitterShare={twitterShare}/>
           </article>
           {mdx.tableOfContents && mdx.frontmatter.toc === true && (
             <aside className="sticky hidden lg:block max-w-xs ml-5 mt-0 h-screen">
@@ -100,6 +106,9 @@ export const pageQuery = graphql`
     mdx(id: { eq: $id }) {
       id
       body
+      fields {
+        slug
+      }
       frontmatter {
         title
         date(formatString: "MMMM Do YYYY")
