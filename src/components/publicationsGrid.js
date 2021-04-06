@@ -84,4 +84,3 @@ const PublicationsGrid = ({ limit = 100000 }) => {
 }
 
 export default PublicationsGrid
-

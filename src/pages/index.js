@@ -1,15 +1,14 @@
 import React from "react"
 import { Link } from "gatsby"
 import { graphql, useStaticQuery } from "gatsby"
-
 import { Blob } from "../components/atoms"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
 import PostList from "../components/postList"
-import ProjectList from "../components/projectList"
 import Contact from "../components/contact"
 import Image from "../components/image"
 import PublicationsGrid from "../components/publicationsGrid"
+import NewsGrid from "../components/newsGrid"
 
 const IndexPage = () => {
   const data = useStaticQuery(graphql`
@@ -66,6 +65,20 @@ const IndexPage = () => {
         </div>
       </div>
       <PostList posts={data.allMdx.edges} showHeading />
+
+      <h2 className="mt-24 font-normal text-accent tracking-widestest">
+        RECENT NEWS/UPDATES
+        </h2>
+      <NewsGrid limit={4} />
+      <div className="inline-block pr-3 mt-4 group hover:text-accent text-lg">
+        <Link to="/news">
+          -&gt;
+                <span className="ml-1 transition inline-block transform duration-500 hover:translate-x-3 ">
+            All News/Updates
+                </span>
+        </Link>
+      </div>
+
       <h2 className="mt-24 font-normal text-accent tracking-widestest">
         RECENT PUBLICATIONS
         </h2>
