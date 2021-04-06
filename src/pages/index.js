@@ -1,5 +1,5 @@
 import React from "react"
-// import { Link } from "gatsby"
+import { Link } from "gatsby"
 import { graphql, useStaticQuery } from "gatsby"
 
 import { Blob } from "../components/atoms"
@@ -9,6 +9,7 @@ import PostList from "../components/postList"
 import ProjectList from "../components/projectList"
 import Contact from "../components/contact"
 import Image from "../components/image"
+import PublicationsGrid from "../components/publicationsGrid"
 
 const IndexPage = () => {
   const data = useStaticQuery(graphql`
@@ -47,7 +48,7 @@ const IndexPage = () => {
             Hi There!
         <br className="mb-6" />
             <br className="mb-6" />
-            <span className="mt-12 lg:mt-0 max-w-3xl text-xl sm:text-xl text-primary font-semibold sm:text-left md:text-center lg:text-left">
+            <span className="mt-12 lg:mt-0 max-w-3xl text-base sm:text-base sm:text-left md:text-center lg:text-left">
               This is my digital garden for all things related to deep learning, machine learning, algorithms, maths, food and everything else!
               <br /><br />I am a
               Principal Research Scientist <a href="https://whiterabbit.ai" className="text-accent hover:text-accent hover:underline no-und" target="_blank" rel="noopener noreferrer">@whiterabbit.ai,</a> Photography Enthusiast, and a Foodie!
@@ -65,7 +66,20 @@ const IndexPage = () => {
         </div>
       </div>
       <PostList posts={data.allMdx.edges} showHeading />
-      <ProjectList showHeading />
+      <h2 className="mt-24 font-normal text-accent tracking-widestest">
+        RECENT PUBLICATIONS
+        </h2>
+      <PublicationsGrid limit={2} />
+      <div className="mt-4 border-t pt-4 border-subtle" aria-label="hidden">
+        <div className="inline-block pr-3 group  hover:text-accent text-lg">
+          <Link to="/about#publications">
+            -&gt;
+                <span className="ml-1 transition inline-block transform duration-500 hover:translate-x-3 ">
+              All Publications
+                </span>
+          </Link>
+        </div>
+      </div>
       <Contact />
     </Layout>
   )
