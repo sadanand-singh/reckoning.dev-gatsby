@@ -8,8 +8,8 @@ export default class Comments extends Component {
     this.commentBox = React.createRef();
   }
   componentDidMount() {
-    const theme = this.context;
-    const utteranceTheme = theme.dark ? "github-dark" : "github-light";
+    const { theme } = this.context;
+    const utteranceTheme = theme === "dark" ? "github-dark" : "github-light";
     let scriptEl = document.createElement("script");
     scriptEl.setAttribute("src", "https://utteranc.es/client.js");
     scriptEl.setAttribute("crossorigin", "anonymous");
