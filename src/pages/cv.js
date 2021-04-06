@@ -83,7 +83,7 @@ const CVPage = () => (
                 </h3>
                 <p><strong>University of Wisconsin - Madison</strong> - <em>2008 - 2013 | Madison, WI</em></p>
                 <p>
-                    <strong>Advisor:</strong> <a href="https://ime.uchicago.edu/de_pablo_lab/people/juan_de_pablo/">Prof. Juan de Pablo</a>
+                    <strong>Advisor:</strong> <a href="https://ime.uchicago.edu/de_pablo_lab/people/juan_de_pablo/">Prof. Juan de Pablo</a>{' '}
                     <strong>Thesis:</strong> <em>Energy landscapes of proteins and glassy materials</em>
                 </p>
                 <h3 id="btech-in-chemical-engineering">
@@ -99,15 +99,15 @@ const CVPage = () => (
                 </h2>
                 <ul>
                     <li>Six Intel Achievement Awards</li>
-                    <li>10+ publications in the highest profile journals including
-                        <a href="https://www.nature.com/articles/nmat3521">Nature Materials</a> and
+                    <li>10+ publications in the highest profile journals including{' '}
+                        <a href="https://www.nature.com/articles/nmat3521">Nature Materials</a> and{' '}
                         <a href="https://www.nature.com/articles/nchem.1293">Nature Chemistry</a>
                     </li>
-                    <li>Work on ultra-stable glasses covered in regular media
-                        <a href="https://phys.org/news/2013-01-reveals-ordinary-glass-extraordinary-properties.html">Source 1</a>
+                    <li>Work on ultra-stable glasses covered in regular media{' '}
+                        <a href="https://phys.org/news/2013-01-reveals-ordinary-glass-extraordinary-properties.html">Source 1</a>{' '}
                         <a href="https://www.redorbit.com/news/science/1113407994/new-type-of-glass-demonstrates-molecular-order-082115/">Source 2</a>
                     </li>
-                    <li>Work on diabetes protein structure molding highlighted in media
+                    <li>Work on diabetes protein structure molding highlighted in media{' '}
                         <a href="https://cen.acs.org/articles/91/i46/Unfolding-Diabetes.html">Source</a>
                     </li>
                     <li>Received one of the swiftest promotion in less than 3 years at Intel Corp. 2016</li>
