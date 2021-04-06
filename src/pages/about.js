@@ -15,23 +15,47 @@ const About = _ => {
           <p>
             Hi, I’m <strong>Sadanand Singh</strong>. I work at{" "}
             <ExtLink link="https://whiterabbit.ai/">Whiterabbit.ai.</ExtLink>{" "}
-            I build AI models in medical imaging and enjoy working with Algorithms, Python/C++, and medical and biological data. My background is in computational physics, numerical modeling and optimization and software design. I have a PhD in computational physics/chemical engineering focusing on computational models of nano-materials and bio-molecules.
+            I build AI models in medical imaging and enjoy working with Algorithms, Python/C++,
+            and medical and biological data. My background is in computational physics, numerical
+            modeling and optimization and software design. I have a PhD in computational
+            physics/chemical engineering focusing on computational models of nano-materials
+            and bio-molecules.
             </p>
           <br />
           <p>
-            My active area of research is in applications of deep learning and computer vision in medical imaging and in the radiology business. I am specifically interested in designing AI models that are explainable and tractable.
+            My active area of research is in applications of deep learning and computer vision in
+            medical imaging and in the radiology business. I am specifically interested in
+            designing AI models that are explainable and tractable.
           </p>
-
-          <h2 className="relative mt-6 mb-2 text-lg font-semibold text-primary"> Research Questions </h2>
-          <span>
-            My research contributions have sought to address
-            <span className="italic">variants</span>
-            of these questions:
-          </span>
+          <h2 className="relative mt-6 mb-2 text-lg font-semibold text-primary">
+            Research Interests
+          </h2>
           <ul className="p-3  mt-1 mb-1 list-disc list-inside">
-            <li className="mb-1"> How do users make decisions as they use technology tools? What are the implications for interface design?</li>
-            <li className="mb-1"> How can we be build tools that help non-experts <span className="italic">understand</span> machine learning?</li>
-            <li className="mb-1"> How can we apply advances in ML in designing better user (read <span className="italic font-semibold"> product </span> ) experiences?</li>
+            <li className="mb-1">
+              Applications of deep learning algorithms to multi-modal screening mammography for
+              classification and localization of cancer
+            </li>
+            <li className="mb-1">
+              Development of <span className="italic"> explainable </span>
+              AI models for medical applications.
+            </li>
+            <li className="mb-1">
+              Domain adaptation of
+              <span className="italic"> Deep Leaning and Machine Learning </span> models
+            </li>
+            <li className="mb-1">
+              <span className="italic"> Self-supervised learning </span>
+              to incorporate large amounts of unlabeled medical data
+            </li>
+            <li className="mb-1">
+              Applications of modern web technologies to make
+              <span className="italic"> deep learning</span> research more transparent,
+              reproducible and easy to share.
+            </li>
+            <li className="mb-1">
+              Using fundamentals of <span className="italic"> stochastic learning </span>
+              to model consumer behabvior.
+            </li>
           </ul>
 
           <h2 className="relative mt-6 mb-3 text-2xl font-bold text-accent">CV</h2>
