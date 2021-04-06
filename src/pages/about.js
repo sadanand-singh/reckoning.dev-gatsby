@@ -10,15 +10,10 @@ import ProjectGrid from "../components/projectGrid"
 import SkillGrid from "../components/skillGrid"
 import skills from "../data/skills"
 
-const Projects = () => {
+const SkillsList = () => {
   return (
     <section>
-      <Heading>Projects</Heading>
-      <p className="-mt-3 mb-8 text-tertiary">
-        Collection of DL, ML and Web development side projects.
-      </p>
-      <ProjectGrid />
-      <div className="mt-12 flex flex-col space-y-0">
+      <div className="mt-2 flex flex-col space-y-0">
         {skills.map(data => {
           return (
             <SkillGrid
@@ -94,12 +89,13 @@ const About = _ => {
               This file was last updated on Tue March 30 2021.
             </div>
           </div>
-
-          <h2 id="publications" className="relative mt-12 mb-3 text-2xl font-bold text-accent">
-            Publications
-          </h2>
+          <SkillsList />
           <PublicationsGrid />
-          <Projects />
+          <Heading>Projects</Heading>
+          <p className="-mt-3 mb-8 text-tertiary">
+            Collection of DL, ML and Web development side projects.
+          </p>
+          <ProjectGrid />
         </article>
       </div>
       <Contact />

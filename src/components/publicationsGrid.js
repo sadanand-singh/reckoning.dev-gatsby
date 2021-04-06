@@ -31,6 +31,9 @@ const PatentLink = ({ link }) => {
 const PublicationsGrid = ({ limit = 100000 }) => {
     return (
         <section className="mb-12">
+            <h2 id="publications" className="relative mt-12 mb-6 text-2xl font-bold text-accent">
+                Publications
+            </h2>
             {
                 publications.slice(0, limit).map(data => {
                     return (

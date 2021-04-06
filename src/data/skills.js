@@ -1,6 +1,6 @@
 const data = [
   {
-    label: "AI and Computer Vision",
+    label: "AI and Computer Vision Skills",
     description:
       "Skills I acquired during 5+ years of being in tech industry",
     categories: [
