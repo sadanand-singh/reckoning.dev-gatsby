@@ -7,12 +7,50 @@ import { Heading } from "../components/atoms"
 import Newsletter from "../components/newsletter"
 import { graphql, useStaticQuery } from "gatsby"
 
+const LabIcon = () => {
+  return (
+    <span><svg aria-hidden="true" className="mr-1 inline h-6 w-6  transition duration-100" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.759 20.498c-2.342-3.663-5.575-6.958-5.743-11.498h-2.016c.173 5.212 3.512 8.539 5.953 12.356.143.302-.068.644-.377.644h-1.264l-4.734-7h-3.52c.873-1.665 1.85-3.414 1.936-6h-2.01c-.169 4.543-3.421 7.864-5.743 11.498-.165.347-.241.707-.241 1.057 0 1.283 1.023 2.445 2.423 2.445h13.153c1.4 0 2.424-1.162 2.424-2.446 0-.35-.076-.709-.241-1.056zm-4.759-15.498c0 1.105-.896 2-2 2s-2-.895-2-2 .896-2 2-2 2 .895 2 2zm-5-1.5c0 .829-.672 1.5-1.5 1.5s-1.5-.671-1.5-1.5.672-1.5 1.5-1.5 1.5.671 1.5 1.5zm0 3.5c0 .552-.447 1-1 1s-1-.448-1-1 .447-1 1-1 1 .448 1 1zm3-6c0 .552-.447 1-1 1s-1-.448-1-1 .447-1 1-1 1 .448 1 1z"></path></svg></span>
+  )
+}
+
+const CodeIcon = () => {
+  return (
+    <span><svg aria-hidden="true" className="mr-1 inline h-6 w-6  transition duration-100" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M24 10.935v2.131l-8 3.947v-2.23l5.64-2.783-5.64-2.79v-2.223l8 3.948zm-16 3.848l-5.64-2.783 5.64-2.79v-2.223l-8 3.948v2.131l8 3.947v-2.23zm7.047-10.783h-2.078l-4.011 16h2.073l4.016-16z"></path></svg></span>
+  )
+}
+
+const VizIcon = () => {
+  return (
+    <span><svg aria-hidden="true" className="mr-1 inline h-6 w-6  transition duration-100" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 9v8h-2v-8h2zm2-2h-6v12h6v-12zm6-4v14h-2v-14h2zm2-2h-6v18h6v-18zm6 13v3h-2v-3h2zm2-2h-6v7h6v-7zm1 9h-24v2h24v-2z"></path></svg></span>
+  )
+}
+
+const BrushIcon = () => {
+  return (
+    <span><svg aria-hidden="true" className="mr-1 inline h-6 w-6  transition duration-100" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M0 0c2.799 1.2 8.683.955 8.307 6.371l-2.143 2.186c-5.338.093-5.239-5.605-6.164-8.557zm10.884 15.402c2.708 2.048 11.824 8.451 11.824 8.451.754.513 1.662-.417 1.136-1.162 0 0-6.607-8.964-8.719-11.619-1.668-2.101-2.502-2.175-5.46-3.046l-1.953 1.997c.936 2.931 1.033 3.76 3.172 5.379zm-4.877 3.332l2.62-2.626c-.26-.244-.489-.485-.69-.724l-2.637 2.643.707.707zm8.244-11.162l4.804-4.814 2.154 2.155-4.696 4.706c.438.525.813 1.021 1.246 1.584l6.241-6.253-4.949-4.95-6.721 6.733c.705.229 1.328.483 1.921.839zm4.837-3.366l-3.972 3.981c.24.199.484.423.732.681l3.946-3.956-.706-.706zm-9.701 12.554l-3.6 3.607-2.979.825.824-2.979 3.677-3.685c-.356-.583-.617-1.203-.859-1.904l-4.626 4.635-1.824 6.741 6.773-1.791 4.227-4.234c-1-.728-1.03-.749-1.613-1.215z"></path></svg></span>
+  )
+}
+
+
 const Tag = ({ allPosts, tag }) => {
   let posts = allPosts.filter(post => post.node.frontmatter.tags.includes(`${tag}`));
+  let Icon;
+  switch (tag) {
+    case 'Deep Learning':
+      Icon = <VizIcon />; break;
+    case 'Algorithms':
+      Icon = <LabIcon />; break;
+    case 'Web':
+      Icon = <CodeIcon />; break;
+    case 'Guides':
+      Icon = <BrushIcon />; break;
+    default:
+      Icon = <VizIcon />;
+  }
   return (
     <div className="flex flex-col rounded-sm  text-sm border border-dashed border-l-0 border-t-0 border-r-0 border-b-1 border-opacity-70 border-gray-500">
       <div className="w-full text-secondary hover:text-primary sm:inline-block mb-2 pb-2 border border-gray-500 border-r-0 border-dashed border-l-0 border-t-0 border-opacity-10">
-        <span><svg aria-hidden="true" className="mr-1 inline h-6 w-6  transition duration-100" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.759 20.498c-2.342-3.663-5.575-6.958-5.743-11.498h-2.016c.173 5.212 3.512 8.539 5.953 12.356.143.302-.068.644-.377.644h-1.264l-4.734-7h-3.52c.873-1.665 1.85-3.414 1.936-6h-2.01c-.169 4.543-3.421 7.864-5.743 11.498-.165.347-.241.707-.241 1.057 0 1.283 1.023 2.445 2.423 2.445h13.153c1.4 0 2.424-1.162 2.424-2.446 0-.35-.076-.709-.241-1.056zm-4.759-15.498c0 1.105-.896 2-2 2s-2-.895-2-2 .896-2 2-2 2 .895 2 2zm-5-1.5c0 .829-.672 1.5-1.5 1.5s-1.5-.671-1.5-1.5.672-1.5 1.5-1.5 1.5.671 1.5 1.5zm0 3.5c0 .552-.447 1-1 1s-1-.448-1-1 .447-1 1-1 1 .448 1 1zm3-6c0 .552-.447 1-1 1s-1-.448-1-1 .447-1 1-1 1 .448 1 1z"></path></svg></span>
+        {Icon}
         <div className="ml-1  inline-block ">
           <span className="font-semibold text-lg ">{tag}</span>
           <span className="text-sm "> ({posts.length})</span>
@@ -83,10 +121,10 @@ const Blog = () => {
       <Heading>Blog</Heading>
 
       <div className="divide grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2  lg:grid-cols-4 gap-3">
-        <Tag allPosts={posts} tag={'css'} />
-        <Tag allPosts={posts} tag={'gatsby'} />
-        <Tag allPosts={posts} tag={'life'} />
-        <Tag allPosts={posts} tag={'css'} />
+        <Tag allPosts={posts} tag={'Deep Learning'} />
+        <Tag allPosts={posts} tag={'Algorithms'} />
+        <Tag allPosts={posts} tag={'Web'} />
+        <Tag allPosts={posts} tag={'Guides'} />
       </div>
 
       <PostList posts={data.allMdx.edges} />
