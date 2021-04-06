@@ -25,7 +25,7 @@ const Footer = _ => {
               className="text-xs tracking-wider self-center md:self-end"
               aria-label="Copyright"
             >
-              © 2021 Sadanand Singh. All Rights Reserved.
+              © 2021 reckoning.dev All Rights Reserved.
             </span>
             <div className="flex flex-row items-center space-x-4 justify-center md:justify-end">
               <span>
