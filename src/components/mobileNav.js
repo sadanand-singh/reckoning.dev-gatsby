@@ -65,10 +65,10 @@ const MobileNav = () => {
               <Link to="/blog">BLOG</Link>
             </div>
             <div className="flex-grow">
-              <Link to="/projects">PROJECTS</Link>
+              <Link to="/about">ABOUT</Link>
             </div>
             <div className="flex-grow">
-              <Link to="/about">ABOUT</Link>
+              <Link to="https://wiki.reckoning.dev" target="_blank" rel="noopener noreferrer">Wiki</Link>
             </div>
             <ThemeToggle />
           </nav>

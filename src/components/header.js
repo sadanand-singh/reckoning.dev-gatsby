@@ -1,7 +1,7 @@
 import { Link } from "gatsby"
 import React from "react"
 import ThemeToggle from "./themeToggle"
-import { NavLink, BlobHeader } from "./atoms"
+import { NavLink, NavExtLink, BlobHeader } from "./atoms"
 
 const Header = ({ activePage }) => (
   <header className="container m-auto px-5 sm:px-12 md:px-20 max-w-screen-xl h-32 overflow-hidden">
@@ -27,16 +27,16 @@ const Header = ({ activePage }) => (
         <NavLink to="/blog" title="Blog" selected={activePage === "blog"}>
           Blog
         </NavLink>
-        <NavLink
-          to="/projects"
-          title="Projects"
-          selected={activePage === "projects"}
-        >
-          Projects
-        </NavLink>
         <NavLink to="/about" title="About" selected={activePage === "about"}>
           About
         </NavLink>
+        <NavExtLink
+          to="https://wiki.reckoning.dev"
+          title="Wiki"
+          selected={activePage === "wiki"}
+        >
+          Wiki
+        </NavExtLink>
       </span>
       <ThemeToggle className="hidden sm:block hover:text-accent transition duration-150" />
     </nav>
