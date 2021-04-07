@@ -78,7 +78,7 @@ const About = _ => {
             </li>
             <li className="mb-1">
               Using fundamentals of <span className="italic"> stochastic learning </span>
-              to model consumer behabvior.
+              to model consumer behavior.
             </li>
           </ul>
 

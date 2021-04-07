@@ -6,15 +6,15 @@ const data = [
                 title: "An improved mammography malignancy model with self-supervised learning",
                 authors: [
                     {
-                        name: "Nhi Truong Vu",
+                        name: "Nhi Truong Vu,",
                         primary: false
                     },
                     {
-                        name: "Trevor Tsue",
+                        name: "Trevor Tsue,",
                         primary: false
                     },
                     {
-                        name: "Jason Su",
+                        name: "Jason Su,",
                         primary: false
                     },
                     {
@@ -112,23 +112,23 @@ const data = [
                         primary: false
                     },
                     {
-                        name: "Meet Shah",
+                        name: "Meet Shah,",
                         primary: false
                     },
                     {
-                        name: "Brent Mombourquette",
+                        name: "Brent Mombourquette,",
                         primary: false
                     },
                     {
-                        name: "Trevor Tsue",
+                        name: "Trevor Tsue,",
                         primary: false
                     },
                     {
-                        name: "Aaron Long",
+                        name: "Aaron Long,",
                         primary: false
                     },
                     {
-                        name: "Ranya Almohsen",
+                        name: "Ranya Almohsen,",
                         primary: false
                     },
                     {
@@ -153,19 +153,19 @@ const data = [
                         primary: false
                     },
                     {
-                        name: "Brent Mombourquette",
+                        name: "Brent Mombourquette,",
                         primary: false
                     },
                     {
-                        name: "Alexis Goh",
+                        name: "Alexis Goh,",
                         primary: false
                     },
                     {
-                        name: "Trevor Tsue",
+                        name: "Trevor Tsue,",
                         primary: false
                     },
                     {
-                        name: "Aaron Long",
+                        name: "Aaron Long,",
                         primary: false
                     },
                     {
@@ -177,7 +177,7 @@ const data = [
                         primary: false
                     },
                     {
-                        name: "Meet Shah",
+                        name: "Meet Shah,",
                         primary: false
                     },
                     {
@@ -514,7 +514,7 @@ const data = [
                         primary: false
                     },
                     {
-                        name: "Juan J.de Pablo",
+                        name: "Juan J.de Pablo,",
                         primary: false
                     },
                     {
