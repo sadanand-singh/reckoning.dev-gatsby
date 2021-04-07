@@ -50,8 +50,7 @@
     "react-use-flexsearch": "^0.1.1",
     "sharp": "^0.28.0",
     "string-similarity": "^4.0.4",
-    "styled-components": "^5.2.3",
-    "styled-icons": "^10.32.0"
+    "styled-components": "^5.2.3"
   },
   "devDependencies": {
     "@babel/core": "^7.13.4",
