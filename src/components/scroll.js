@@ -1,6 +1,6 @@
 import { throttle } from 'lodash'
 import React, { useState } from 'react'
-import { useEventListener } from 'hooks'
+import { useEventListener } from '../hooks/useEventListener'
 import styled from 'styled-components'
 import { ArrowDownCircle as Down, ArrowUpCircle as Up } from 'styled-icons/feather'
 
