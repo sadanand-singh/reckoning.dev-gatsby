@@ -1,0 +1,15 @@
+[build]
+  publish = "public"
+
+[build.environment]
+  NODE_VERSION = "14.16.0"
+
+[[redirects]]
+  from = "https://reckoningdev.netlify.com/*"
+  to = "https://reckoning.dev/:splat"
+  force = true
+
+[[redirects]]
+  from = "https://reckoningdev.io/*"
+  to = "https://reckoning.dev/:splat"
+  force = true
