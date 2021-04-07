@@ -13,7 +13,7 @@ const getInitialTheme = _ => {
     }
   }
 
-  return "dark"
+  return "light"
 }
 
 export const ThemeContext = React.createContext()

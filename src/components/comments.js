@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { ThemeContext } from '../context/themeContext';
+
 export default class Comments extends Component {
   static contextType = ThemeContext;
 
