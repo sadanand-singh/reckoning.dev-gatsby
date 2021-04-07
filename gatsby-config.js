@@ -106,5 +106,45 @@ module.exports = {
       },
     },
     "gatsby-remark-autolink-headers",
+    {
+      resolve: 'gatsby-plugin-local-search',
+      options: {
+        name: 'pages',
+        engine: 'flexsearch',
+        engineOptions: 'speed',
+        query: `
+          {
+            allMdx(filter: { frontmatter: { published: { eq: true } } }) {
+              nodes {
+                id
+                excerpt
+                frontmatter {
+                  title
+                  tags
+                  slug
+                  published
+                  featured
+                  date(formatString: "MMMM Do YYYY")
+                }
+                body
+              }
+            }
+          }
+        `,
+        ref: 'id',
+        index: ['title', 'tags'],
+        store: ['id', 'slug', 'title', 'tags', 'date', 'featured', 'description'],
+        normalizer: ({ data }) =>
+          data.allMdx.nodes.map((node) => ({
+            id: node.id,
+            slug: `/blog/${node.frontmatter.slug}`,
+            title: node.frontmatter.title,
+            description: node.excerpt,
+            tags: node.frontmatter.tags,
+            date: node.frontmatter.date,
+            featured: node.frontmatter.featured,
+          })),
+      },
+    },
   ],
 }

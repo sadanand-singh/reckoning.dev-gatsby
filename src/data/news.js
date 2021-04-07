@@ -11,7 +11,7 @@ const data = [
         title: "Data-efficient image Transformers",
         text: "Image classification — the task of understanding the main content of an image — is easy for humans but hard for machines. In particular, it is challenging for convolution-free Transformers like DeiT...",
         type: "Blog Post",
-        link: "https://ai.facebook.com/blog/end-to-end-object-detection-with-transformers/",
+        link: "https://ai.facebook.com/blog/data-efficient-image-transformers-a-promising-new-technique-for-image-classification",
     },
     {
         date: "3 January 2021",
