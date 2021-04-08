@@ -48,7 +48,6 @@
     "react-scroll-to-top": "^1.0.5",
     "react-plotly.js": "2.5.1",
     "react-use-flexsearch": "^0.1.1",
-    "sharp": "^0.28.0",
     "string-similarity": "^4.0.4",
     "styled-components": "^5.2.3"
   },
