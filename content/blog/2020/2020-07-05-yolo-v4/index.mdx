@@ -11,6 +11,8 @@ published: true
 toc: true
 seoImage: 'og-card-blog.png'
 ---
+import ResultsTable from "../../../../src/components/table.js"
+import resData from './results.js'
 
 Object detection is useful for understanding what's in an image, describing both what is in an
 image and where those objects are found. In general, there are two different approaches for this
@@ -429,6 +431,13 @@ takes IoU and the distance between the central points of two bounding boxes when
 redundant boxes. This makes it more robust for the cases with occlusions.
 
 ## Results Summary
+
+A comparison of results for YOLOv4 with other object detection models on MS COCO dataset with
+Maxell GPU is shown in the table below. In particular here we are looking only for speed
+(FPS - frames per second), and accuracy (AP - average pecision and AP_small - average precision
+for small objects only).
+
+<ResultsTable data={resData} id="test" />
 
 Comparing results with other detectors is pretty impressive! They outperform in terms of both speed
 and average precision scores.
