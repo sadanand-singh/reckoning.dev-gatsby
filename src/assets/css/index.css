@@ -134,6 +134,10 @@ a.anchor {
   top: 0.65rem !important;
 }
 
+thead {
+  color: var(--color-text-primary) !important;
+}
+
 aside.sticky {
   top: 4rem;
 }

@@ -13,30 +13,34 @@ const Plotly = Loadable({
   timeout: 10000,
 })
 
-export const LazyPlot = ({ layout, style, config, ...rest }) => {
+export const LazyPlot = ({ layout, style, config, id, ...rest }) => {
   return (
-    <Plotly
-      layout={{
-        margin: { t: 0, r: 52, b: 0, l: 0 },
-        // paper_bgcolor: `rgba(0, 0, 0, 0)`,
-        // plot_bgcolor: `rgba(0, 0, 0, 0)`,
-        font: {
-          color: `black`,
-          size: 16,
-        },
-        // The next 3 options make the plot responsive.
-        autosize: true,
-        ...layout,
-      }}
-      style={{ width: `100%`, ...style }}
-      useResizeHandler
-      config={{
-        displayModeBar: true,
-        showTips: true,
-        displaylogo: false,
-        ...config,
-      }}
-      {...rest}
-    />
+    <div id={id} className="mb10 block mb-4">
+      <div className="text-sm border p-2 border-opacity-50 border-dashed rounded">
+        <div className="bg-white rounded p-2">
+          <Plotly
+            layout={{
+              margin: { t: 0, r: 52, b: 0, l: 0 },
+              font: {
+                color: `black`,
+                size: 16,
+              },
+              // The next 3 options make the plot responsive.
+              autosize: true,
+              ...layout,
+            }}
+            style={{ width: `100%`, ...style }}
+            useResizeHandler
+            config={{
+              displayModeBar: true,
+              showTips: true,
+              displaylogo: false,
+              ...config,
+            }}
+            {...rest}
+          />
+        </div>
+      </div>
+    </div>
   )
 }
