@@ -3,7 +3,7 @@ import React from "react"
 const ResultsTable = ({ data, id }) => {
     const headingData = data[0]
     const results = data.slice(1)
-    const num_keys = results.length
+    const num_keys = headingData.results_keys.length
     return (
         <div id={id} className="mb10 block mb-4 bg-white rounded">
             <div className="text-sm divide-y border p-2 border-opacity-50 border-dashed rounded">

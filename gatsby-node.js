@@ -119,7 +119,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 
   posts.forEach(({ node, next, previous }, index) => {
     console.log(
-      `🍕 Dynamically creating page for ${node.fields.slug} with og-image ${node.frontmatter.seoImage}`
+      `🍕 Dynamically creating page for ${node.fields.slug}`
     )
 
     createPage({

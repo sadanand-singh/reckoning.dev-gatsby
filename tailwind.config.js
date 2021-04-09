@@ -7,7 +7,10 @@ module.exports = {
       "./src/**/*.tsx",
     ],
     options: {
-      whitelist: ["ml-3"], // ml-3 for toc depth
+      safelist: {
+        standard: [/^ml-/],
+        greedy: [/^grid-/]
+      }
     },
   },
   theme: {
