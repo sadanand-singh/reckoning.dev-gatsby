@@ -1,5 +1,12 @@
 const data = [
     {
+        date: "5 April 2021",
+        title: "UPDATE: A more reactive site and blog with gatsby",
+        text: "Updated this blog site to use gatsby! Allows me to add many react components in pages and provide a more interactive experience.",
+        type: "Blog Post",
+        link: "https://reckoning.dev/",
+    },
+    {
         date: "23 January 2021",
         title: "How do you measure trust in deep learning?",
         text: "Whether it’s diagnosing patients or driving cars, we want to know whether we can trust a person before assigning them a sensitive task. In the human world, we have different ways to establish and measure trustworthiness.",
