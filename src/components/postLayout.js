@@ -1,5 +1,6 @@
 import React from "react"
 import { graphql } from "gatsby"
+import kebabCase from "lodash.kebabcase"
 import { MDXProvider } from "@mdx-js/react"
 import { MDXRenderer } from "gatsby-plugin-mdx"
 import { getSrc } from "gatsby-plugin-image"
@@ -36,17 +37,17 @@ const PostLayout = ({ pageContext, data: { mdx, ogImage } }) => {
   const { next, previous } = pageContext;
   const nextArticle = next && (
     <div className="flex-1 text-right no-und">
-      <a className="no-und" rel="prev" href={next.fields.slug}>
+      <Link className="no-und" rel="prev" to={next.fields.slug}>
         <span className="border p-2 mr-2 no-und"> Previous → </span>
-      </a>
+      </Link>
     </div>
   )
 
   const prevArticle = previous && (
     <div className="flex-1  no-und">
-      <a className="no-und" rel="next" href={previous.fields.slug}>
+      <Link className="no-und" rel="next" to={previous.fields.slug}>
         <span className="border p-2 mr-2 "> ← Next </span>
-      </a>
+      </Link>
     </div>
   )
   return (
@@ -91,7 +92,7 @@ const PostLayout = ({ pageContext, data: { mdx, ogImage } }) => {
                   <span key={index} className="text-sm ">
                     {(index ? ', ' : '')}
                     <span className="hover:text-accent hover:underline">
-                      <a href={`/tags/${tag}/`}>{tag}</a>
+                    <Link to={`/tags/${kebabCase(tag)}`.replace(/\/\/+/g, `/`)}>{tag}</Link>
                     </span>
                   </span>
                 ))}

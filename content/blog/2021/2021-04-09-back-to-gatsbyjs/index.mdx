@@ -90,27 +90,27 @@ built with data from multiple sources. To be able to get the data on the fly and
 without rebuilding your site makes your posts a lot more powerful.
 
 Here is a live working example. I have been an avid user of
-[Code::Stats](https://codestats.net/users/sadanand-singh) to track my coding habit. Their online
-page provides a good summary of my data, but I was also interesting in additional things like
+[Code::Stats](https://codestats.net/users/sadanand-singh) to track my coding habits. Their online
+page provides a good summary of my data, but I was also interested in additional visualizations like
 
 - How am I doing on different days of the Week?
 - What fraction of my time is spent on different languages that I work with?
 
 <CodeStats />
 
-React allows me to code this right in the markdown files and visualize it without rebuilding by
-site again and again. You can look at my React component that enables rendering the above plot here
+React allows me to code these right in mdx files and visualize them without rebuilding this site
+again and again. You can take a look at my React component that enables rendering the above plots here
 at [Github](https://github.com/sadanand-singh/reckoning.dev-gatsby/blob/main/src/components/codeStats.js).
 
 
 ## (Re)Active/Interactive Components
 
-You just saw above, now I can add dynamic plots in the middle of this markdown. Similarly, we can
-add any type of react components in markdown and build really powerful sites! You can take a look
-all of my components at this site's
+You just saw above, now I can add dynamic plots in the middle of this post from the markdown/mdx
+file. Similarly, we can add any type of react components in markdown and build really powerful
+sites! You can take a look all of my components at this site's
 [Github Repo](https://github.com/sadanand-singh/reckoning.dev-gatsby/blob/main/src/components/).
 
-Any of these components can be easily added to mdx files as follows:
+Any of these components can be easily added to any mdx file as follows:
 
 ```js
 import { CodeStats } from " ../components/codeStats.js";
@@ -122,8 +122,8 @@ import { CodeStats } from " ../components/codeStats.js";
 ### gatsby.js
 
 Given I had already used gatsby before, it was pretty easy tyo work with it. Nevertheless, since I
-understand a lot more about many of the underlying technologies, it was a lot of fun rewriting
-different parts.
+understand a lot more about many of the underlying technologies and frameworks, it was a lot of fun
+rewriting different parts.
 
 I was able to get a skeleton going over a long weekend.
 

@@ -1,4 +1,5 @@
 import React from "react"
+import { Link } from "gatsby"
 import useIntersectNode from "../hooks/useIntersectionObserver"
 
 const TocEntry = ({ items, active, depth = 0 }) => {
@@ -8,9 +9,9 @@ const TocEntry = ({ items, active, depth = 0 }) => {
       } ${color}`
     return (
       <React.Fragment key={item.url}>
-        <a href={item.url} className={style}>
+        <Link to={item.url} className={style}>
           {item.title}
-        </a>
+        </Link>
         {item.items && (
           <TocEntry items={item.items} active={active} depth={depth + 1} />
         )}
