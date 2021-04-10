@@ -1,7 +1,7 @@
 ---
 title: 'Why I Moved My Personal Website back to Gatsby.JS'
 date: "2021-04-09"
-published: false
+published: true
 toc: true
 slug: back-to-gatsbyjs-2021
 tags:
@@ -10,6 +10,7 @@ tags:
 ---
 
 import { Callout } from "../../../../src/components/atoms.js"
+import CodeStats from "../../../../src/components/codeStats.js"
 
 In the last few years I have experimented quite a bit with py person website. I started this blog
 using [pelican](https://blog.getpelican.com/) in 2014. Since then, I moved to
@@ -95,14 +96,14 @@ page provides a good summary of my data, but I was also interesting in additiona
 - How am I doing on different days of the Week?
 - What fraction of my time is spent on different languages that I work with?
 
-<!-- inset codestats plot here -->
+<CodeStats />
 
-React allows me to code this right and visualize this without rebuilding by site again and again.
-You can look at my React component that enables rendering the above plot here at
-[Github](https://github.com/sadanand-singh/reckoning.dev-gatsby/blob/main/src/components/codeStats.js).
+React allows me to code this right in the markdown files and visualize it without rebuilding by
+site again and again. You can look at my React component that enables rendering the above plot here
+at [Github](https://github.com/sadanand-singh/reckoning.dev-gatsby/blob/main/src/components/codeStats.js).
 
 
-## (Re)Active/Interactive Components Everywhere!
+## (Re)Active/Interactive Components
 
 You just saw above, now I can add dynamic plots in the middle of this markdown. Similarly, we can
 add any type of react components in markdown and build really powerful sites! You can take a look
@@ -145,10 +146,9 @@ And thats all! I will be writing more details about development of different com
 features in this site in a series of posts.
 
 
-## References
+## Older Posts
 
 [^1]: [This Blog is Now Powered by GatsbyJS](/blog/hugo-to-gatsby/)
 [^2]: [Updating GatsbyJS Looks: A New Home with A New Look](/blog/gatsby-theme-new/)
 [^3]: [New Features for this Blog](/blog/blog-new-features/)
 [^4]: [Using Novela Theme with Modifications](/blog/novela-theme-update/)
-
