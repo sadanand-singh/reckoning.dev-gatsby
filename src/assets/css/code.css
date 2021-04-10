@@ -39,10 +39,6 @@ code {
 }
 
 pre {
-  position: relative;
-  direction: ltr;
-  font-size: 14px;
-  white-space: nowrap !important;
   text-align: left;
   margin: 1em 0;
   padding-top: 2em !important;
@@ -52,14 +48,7 @@ pre {
   border-radius: 3px;
   word-spacing: normal;
   word-break: normal;
-  line-height: 1.7;
-  font-weight: 400;
   margin: 2rem 0;
-  tab-size: 2;
-  hyphens: none;
-  border-radius: 0px 0px 4px 4px !important;
-  -webkit-font-smoothing: antialiased;
-  font-family: Menlo, Roboto Mono, Courier New, monospace;
 }
 
 .gatsby-highlight {

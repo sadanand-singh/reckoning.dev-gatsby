@@ -32,7 +32,6 @@ export const LazyPlot = ({ layout, style, config, id, ...rest }) => {
             style={{ width: `100%`, ...style }}
             useResizeHandler
             config={{
-              displayModeBar: true,
               showTips: true,
               displaylogo: false,
               ...config,

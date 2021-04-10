@@ -237,17 +237,17 @@ I first ran all 4 experiments (SGD and Adam optimizers with learning rates of 0.
 you can see in the screen shots below, it is quite handy to view progress of individual
 experiments:
 
-<div class="flex flex-col md:flex-row">
-  <div class="flex-1 p-1 m-1">
+<div className="flex flex-col md:flex-row">
+  <div className="flex-1 p-1 m-1">
     <figure>
     <img src="https://res.cloudinary.com/sadanandsingh/image/upload/v1555803192/comet/exp_list_dhgqxu.png"/>
-    <figcaption class="text-center text-xs">Status of All Experiments</figcaption>
+    <figcaption className="text-center text-xs">Status of All Experiments</figcaption>
     </figure>
   </div>
-  <div class="flex-1 p-1 m-1">
+  <div className="flex-1 p-1 m-1">
     <figure>
     <img src="https://res.cloudinary.com/sadanandsingh/image/upload/v1555804423/comet/exp_charts_qywcey.png"/>
-    <figcaption class="text-center text-xs">Progress of Individual Experiments</figcaption>
+    <figcaption className="text-center text-xs">Progress of Individual Experiments</figcaption>
     </figure>
   </div>
 </div>
@@ -261,24 +261,24 @@ a tabular view with min/max of different metrics, code, parameters etc. By defau
 individual plots for losses and metric for train and test modes. However, you can create your own
 set of plots. Here, I created plots to compare test/train accuracy and losses.
 
-{% wrap "text-teal-800 font-bold" %}
+<div className="text-teal-800 font-bold">
 This is a quite good model. We are getting 99% test accuracy with so little training.
-{% endwrap %}
+</div>
 
 Additionally, we get other handy information like list of hyper parameters, gpu utilization and a
 tabular view of metrics.
 
-<div class="flex flex-col md:flex-row">
-  <div class="flex-1 p-1 m-1">
+<div className="flex flex-col md:flex-row">
+  <div className="flex-1 p-1 m-1">
     <figure>
     <img src="https://res.cloudinary.com/sadanandsingh/image/upload/v1555804851/comet/gpu-props_l0rwsd.png"/>
-    <figcaption class="text-center text-xs">GPU Utilization</figcaption>
+    <figcaption className="text-center text-xs">GPU Utilization</figcaption>
     </figure>
   </div>
-  <div class="flex-1 p-1 m-1">
+  <div className="flex-1 p-1 m-1">
     <figure>
     <img src="https://res.cloudinary.com/sadanandsingh/image/upload/v1555805270/comet/reproduce_exp_x0zeaf.png"/>
-    <figcaption class="text-center text-xs">Experiment Reproducibility</figcaption>
+    <figcaption className="text-center text-xs">Experiment Reproducibility</figcaption>
     </figure>
   </div>
 </div>
@@ -291,17 +291,17 @@ page where you get a list view of experiments, there is an option to plot some m
 function of experiments. It's pretty easy to add a comparison chart for some given metric and
 compare different experiments pretty quickly:
 
-<div class="flex flex-col md:flex-row">
-  <div class="flex-1 p-1 m-1">
+<div className="flex flex-col md:flex-row">
+  <div className="flex-1 p-1 m-1">
     <figure>
     <img src="https://res.cloudinary.com/sadanandsingh/image/upload/v1557038035/comet/Screen_Shot_2019-05-04_at_11.33.09_PM_tpnyyl.png"/>
-    <figcaption class="text-center text-xs">Tracking Individual Metrics</figcaption>
+    <figcaption className="text-center text-xs">Tracking Individual Metrics</figcaption>
     </figure>
   </div>
-  <div class="flex-1 p-1 m-1">
+  <div className="flex-1 p-1 m-1">
     <figure>
     <img src="https://res.cloudinary.com/sadanandsingh/image/upload/v1557038994/comet/dirty_compare_qo6i7x.png"/>
-    <figcaption class="text-center text-xs">Comparing Experiments</figcaption>
+    <figcaption className="text-center text-xs">Comparing Experiments</figcaption>
     </figure>
   </div>
 </div>
@@ -319,17 +319,17 @@ control here which ones get plotted in the graph.
 However, even with limiting what graphs we see for the comparison, the graphs are not usable. I was
 hoping to get more control over plotting, may be even on-demand plotting.
 
-<div class="flex flex-col md:flex-row">
-  <div class="flex-1 p-1 m-1">
+<div className="flex flex-col md:flex-row">
+  <div className="flex-1 p-1 m-1">
     <figure>
     <img src="https://res.cloudinary.com/sadanandsingh/image/upload/v1557039275/comet/metrics_compare_akmutf.png"/>
-    <figcaption class="text-center text-xs">Diff across different experiments</figcaption>
+    <figcaption className="text-center text-xs">Diff across different experiments</figcaption>
     </figure>
   </div>
-  <div class="flex-1 p-1 m-1">
+  <div className="flex-1 p-1 m-1">
     <figure>
     <img src="https://res.cloudinary.com/sadanandsingh/image/upload/v1557084082/comet/clean_compare.png"/>
-    <figcaption class="text-center text-xs">Comparing Multiple Experiment Metrics</figcaption>
+    <figcaption className="text-center text-xs">Comparing Multiple Experiment Metrics</figcaption>
     </figure>
   </div>
 </div>

@@ -8,6 +8,8 @@ tags:
   - 'Algorithms'
 ---
 import { Callout } from "../../../../src/components/atoms.js"
+import { LazyPlot } from '../../../../src/components/plotly.js'
+import plotData from "./plot.js"
 
 The world of computers is moving fast. While going through some materials on algorithms, I have
 come across an interesting discussion -enhancements in hardware (cpu) vis-a-vis algorithms.
@@ -71,6 +73,7 @@ device to calculate say $F_{200}$.
 Here is a simple plot of first few Fibonacci numbers:
 
 <!-- <img class="w-full max-w-2xl mx-auto" src="https://res.cloudinary.com/sadanandsingh/image/upload/v1567314854/fibonacci_cyif3a.png"/> -->
+<LazyPlot {...plotData} />
 
 The most basic algorithm, that comes to mind is a recursive scheme that taps directly into the
 above definition of Fibonacci series.

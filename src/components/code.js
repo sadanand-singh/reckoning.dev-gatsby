@@ -190,7 +190,7 @@ const Code = ({ codeString, className: blockClassName, metastring = ``, ...props
                         </div>
                     )}
                     <div className='gatsby-highlight' data-language={language}>
-                        <pre className={className} style={style}>
+                        <pre className={className} style={{ ...style }}>
                             <Copy toCopy={codeString} />
                             {tokens.map((line, i) => {
                                 const lineProps = getLineProps({ line, key: i });
@@ -198,12 +198,12 @@ const Code = ({ codeString, className: blockClassName, metastring = ``, ...props
                                     lineProps.className = `${lineProps.className} line-highlight`;
                                 }
                                 return (
-                                    <div {...lineProps}>
+                                    <div key={i} {...lineProps}>
                                         {showLines === `true` &&
                                             <span className="line-number-style">{i + 1}</span>
                                         }
                                         {line.map((token, key) => (
-                                            <span {...getTokenProps({ token, key })} />
+                                            <span key={key} {...getTokenProps({ token, key })} />
                                         ))}
                                     </div>
                                 );

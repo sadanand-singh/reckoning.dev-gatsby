@@ -48,7 +48,7 @@ authors named them **backbone**, **neck** and **head**.
 
 <figure>
   <img src="https://res.cloudinary.com/sadanandsingh/image/upload/v1596231167/yolo-v4/backbone.png"/>
-  <figcaption class="text-center text-xs">A typical backbone network</figcaption>
+  <figcaption className="text-center text-xs">A typical backbone network</figcaption>
 </figure>
 
 **Backbone** is usually deep architecture that was pre-trained on the ImageNet dataset without top
@@ -67,7 +67,7 @@ dense predictors (one-stage detectors) or sparse predictors (two-stage detectors
 
 <figure>
   <img src="https://res.cloudinary.com/sadanandsingh/image/upload/v1596231168/yolo-v4/object_detection2.png"/>
-  <figcaption class="text-center text-xs">Anatomy of Different Types of Detectors</figcaption>
+  <figcaption className="text-center text-xs">Anatomy of Different Types of Detectors</figcaption>
 </figure>
 
 ## YOLO V3: An Overview
@@ -80,7 +80,7 @@ and classification scores.
 
 <figure>
   <img src="https://res.cloudinary.com/sadanandsingh/image/upload/v1596231169/yolo-v4/yolov3.png"/>
-  <figcaption class="text-center text-xs">
+  <figcaption className="text-center text-xs">
     <strong>Image Credits: </strong>
     <a href='https://towardsdatascience.com/yolo-v3-object-detection-53fb7d3bfe6b'>
       https://towardsdatascience.com/yolo-v3-object-detection-53fb7d3bfe6b
@@ -103,7 +103,7 @@ of the previous feature map, and has detection attributes along the depth as des
 
 <figure>
   <img src="https://res.cloudinary.com/sadanandsingh/image/upload/v1596231169/yolo-v4/yolo-bbox.png"/>
-  <figcaption class="text-center text-xs">
+  <figcaption className="text-center text-xs">
     <strong>Image Credits: </strong>
     <a href='https://blog.paperspace.com/how-to-implement-a-yolo-object-detector-in-pytorch/'>https://blog.paperspace.com/how-to-implement-a-yolo-object-detector-in-pytorch/</a>
   </figcaption>
@@ -149,7 +149,7 @@ loss for coordinate or class predictions, only objectness.
 
 <figure>
   <img src="https://res.cloudinary.com/sadanandsingh/image/upload/v1596231169/yolo-v4/yolo-loss.png"/>
-  <figcaption class="text-center text-xs">
+  <figcaption className="text-center text-xs">
     Loss Function
   </figcaption>
 </figure>
@@ -207,7 +207,7 @@ Based on all of these, the architecture of YOLOv4 consists of the following upda
 
 <figure>
   <img src="https://res.cloudinary.com/sadanandsingh/image/upload/v1596231169/yolo-v4/pan-yolo.png"/>
-  <figcaption class="text-center text-xs">
+  <figcaption className="text-center text-xs">
     YOLO-v4 version of the Path Aggregation Network
   </figcaption>
 </figure>
@@ -237,7 +237,7 @@ on a similar concept that works on convolution layers.
 
 <figure>
   <img src="https://res.cloudinary.com/sadanandsingh/image/upload/v1596231168/yolo-v4/dropblock.png"/>
-  <figcaption class="text-center text-xs">
+  <figcaption className="text-center text-xs">
     Regular Pixel Dropout vs DropBlock
   </figcaption>
 </figure>
@@ -271,7 +271,7 @@ that has better accuracy and efficiency trade-offs according to the
 
 <figure>
   <img src="https://res.cloudinary.com/sadanandsingh/image/upload/v1596231167/yolo-v4/bifpn.png"/>
-  <figcaption class="text-center text-xs">
+  <figcaption className="text-center text-xs">
     Different Variants of Pyramid Networks for Detection
   </figcaption>
 </figure>
@@ -396,7 +396,7 @@ convolution layer followed by a sigmoid function to create spatial attention.
 
 <figure>
   <img src="https://res.cloudinary.com/sadanandsingh/image/upload/v1596231168/yolo-v4/sam.jpg"/>
-  <figcaption class="text-center text-xs">
+  <figcaption className="text-center text-xs">
     A typical Spatial Attention Module
   </figcaption>
 </figure>
@@ -405,7 +405,7 @@ This spatial attention mask is applied to the input feature to output the refine
 
 <figure>
   <img src="https://res.cloudinary.com/sadanandsingh/image/upload/v1596231167/yolo-v4/conv_sam.jpg"/>
-  <figcaption class="text-center text-xs">
+  <figcaption className="text-center text-xs">
     A typical Convolutional Spatial Attention Module
   </figcaption>
 </figure>
@@ -414,7 +414,7 @@ In YOLOv4, a modified SAM is used without applying the maximum and average pooli
 
 <figure>
   <img src="https://res.cloudinary.com/sadanandsingh/image/upload/v1596231168/yolo-v4/sam-yolo.png"/>
-  <figcaption class="text-center text-xs">
+  <figcaption className="text-center text-xs">
     YOLO V4 version of Spatial Attention Module
   </figcaption>
 </figure>
@@ -444,7 +444,7 @@ and average precision scores.
 
 <figure>
   <img src="https://res.cloudinary.com/sadanandsingh/image/upload/v1596231168/yolo-v4/yolo_results.png"/>
-  <figcaption class="text-center text-xs">
+  <figcaption className="text-center text-xs">
     Summary of Results
   </figcaption>
 </figure>

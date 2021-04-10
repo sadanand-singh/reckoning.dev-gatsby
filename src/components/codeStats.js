@@ -62,7 +62,7 @@ export default class CodeStats extends Component {
             <br />
             <h4>Code:Stats</h4>
             <span className="text-xs">Last Updated at: {currentdate}</span>
-            <div class="grid grid-cols-1 md:grid-cols-2">
+            <div className="grid grid-cols-1 md:grid-cols-2">
               <LazyPlot {...{ 'data': days_data, 'layout': layout, 'config': config, "id": "days_stats_plot" }} />
               <LazyPlot {...{ 'data': langs_data, 'layout': layout, 'config': config, "id": "langs_stats_plot" }} />
             </div>

@@ -1,5 +1,5 @@
-import styled from 'styled-components'
 import React, { useState } from 'react'
+import styled from 'styled-components'
 
 // Adapted from https://tobiasahlin.com/spinkit.
 const FoldingDiv = styled.div`
@@ -55,14 +55,14 @@ const FoldingDiv = styled.div`
 `
 
 export const FoldingSpinner = props => {
-    const [active, setActive] = useState(true)
-    return (
-      <FoldingDiv {...props} active={active} onClick={() => setActive(!active)}>
-        {Array(4)
-          .fill()
-          .map((e, i) => (
-            <div key={i} />
-          ))}
-      </FoldingDiv>
-    )
-  }
+  const [active, setActive] = useState(true)
+  return (
+    <FoldingDiv {...props} active={active} onClick={() => setActive(!active)}>
+      {Array(4)
+        .fill()
+        .map((e, i) => (
+          <div key={i} />
+        ))}
+    </FoldingDiv>
+  )
+}
