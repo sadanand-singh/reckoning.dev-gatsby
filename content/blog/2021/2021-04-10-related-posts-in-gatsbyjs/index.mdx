@@ -31,8 +31,8 @@ In summary, following is the logic used in this website:
 + Look at all posts other than the current post - identified by having a different _slug_.
 + Calculate number of matching tags.
 + Calculate string similarity between titles of the current post and all other posts
-  using [Sørensen–Dice coefficient](https://en.wikipedia.org/wiki/S%C3%B8rensen%E2%80%93Dice_coefficient)
-  - which is a number between 0 and 1.
+  using [Sørensen–Dice coefficient](https://en.wikipedia.org/wiki/S%C3%B8rensen%E2%80%93Dice_coefficient),
+  which is a number between 0 and 1.
 + Final similarity between two posts is: # of matching tags + 3.0 * title string similarity
 + Sort other posts using similarity (in descending order) as primary key and absolute time
   difference between the current post and the other post (in ascending order) as secondary key.
@@ -42,7 +42,7 @@ In summary, following is the logic used in this website:
 ## Implementation
 
 If you think about the above logic, the biggest issue is its an $\mathcal{O}(n^3)$ algorithm. So If
-you have a site with 100 posts, it needs to calculate $100 \product 100 = 10,000$ similarities for
+you have a site with 100 posts, it needs to calculate $100 \times 100 = 10,000$ similarities for
 each of the 100 posts, in total leading to $100^3$, i.e. 1 million computations! Clearly this is
 something you would not want to do at runtime using javascript.
 
@@ -123,104 +123,17 @@ strings s1 and s2.
 Once we have inserted **relatedReads** to all posts queries, we can easily access these in the post
 layout and use these to build a related posts component.
 
-In particular, in `postLayout.js`, we can query these as:
+In particular, in `postLayout.js`, we can query these and then add a related posts component as follows:
 
-```graphql
-export const pageQuery = graphql`
-  query blogPostQuery($id: String, $ogImageSlug: String) {
-    mdx(id: { eq: $id }) {
-      id
-      body
-      fields {
-        slug
-      }
-      frontmatter {
-        title
-        date(formatString: "MMMM Do YYYY")
-        datetime: date
-        description
-        toc
-        tags
-      }
-      excerpt(pruneLength: 140)
-      tableOfContents
-      timeToRead
-      relatedReads(limit: 4) {
-        fields {
-          slug
-        }
-        excerpt(pruneLength: 72)
-        frontmatter {
-          title
-          date(formatString: "MMMM Do YYYY")
-          tags
-          description
-        }
-      }
-    }
-  }
-`
-```
-and then add a related posts component as follows:
-
-```js
+```js:showLines=false
 <RelatedPosts posts={mdx.relatedReads} tags={mdx.frontmatter.tags} />
 ```
 
-In my particular case, I have defined by RelatedPosts component as follows:
+In my particular case, I have defined by a RelatedPosts component using the data accessed
+from query in the `postLayout.js` file.
 
-```js
-import React from "react"
-import kebabCase from "lodash.kebabcase"
-
-const RelatedPosts = ({ posts, tags }) => {
-    return (
-        <div className="">
-            <section className="">
-                <h2 className="mt-10 font-normal text-accent tracking-widestest">
-                    RELATED POSTS |
-                  <span>
-                        <svg aria-hidden="true" className="mr-1 inline h-4 w-4  transition duration-100" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12.051 3.999l9.121 9.111-6.189 6.188-8.983-9.105v-6.194h6.051zm.826-1.999h-8.875l-.002 9.013 10.973 11.125 9.027-9.028-11.123-11.11zm-2.316 6.56c-.586.586-1.535.586-2.121 0s-.586-1.535 0-2.121 1.535-.586 2.121.001c.585.584.585 1.534 0 2.12zm1.043 13.004l-1.37 1.436-10.234-10.258v-7.742h2v6.891l9.604 9.673zm6.343-8.852l-4.494-4.493-.707.707 4.494 4.493.707-.707zm-1.416 1.415l-4.494-4.493-.707.707 4.494 4.492.707-.706zm-3.136-.31l-2.771-2.77-.707.707 2.771 2.77.707-.707z"></path>
-                        </svg>
-                    </span>
-                    {tags.map((tag, index) => (
-                        <span key={index} className="text-sm ">
-                            {(index ? ', ' : '')}
-                            <span className="hover:text-accent hover:underline">
-                                <a href={`/tags/${kebabCase(tag)}`.replace(/\/\/+/g, `/`)}>{tag}</a>
-                            </span>
-                        </span>
-                    ))}
-                </h2>
-
-                <ul className="mt-3  grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 gap-4 ">
-                    {posts.map((post, index) => (
-                        <li key={index} className="py-2 pb-3  border border-l-0 border-r-0 border-t-0 border-b-1 cursor-pointer ">
-                            <a href={post.fields.slug}>
-                                <div className="flex flex-col h-full ">
-                                    <div className="w-full text-sm font-light text-secondary mr-1">{post.frontmatter.date}</div>
-                                    <div className="w-full font-semibold hover:text-accent mb-1">
-                                        {post.frontmatter.title}
-                                    </div>
-                                    <div className="w-full flex-grow text-sm">
-                                        {post.excerpt}
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
-                    ))}
-                </ul>
-            </section>
-        </div>
-    )
-}
-
-export default RelatedPosts
-```
-
-And thats it. If you are curious please have a loot at the
-[github repo](https://github.com/sadanand-singh/reckoning.dev-gatsby) of this website for any
-additional details.
+If you are curious have a loot at the [github repo](https://github.com/sadanand-singh/reckoning.dev-gatsby)
+of this website for any additional details.
 
 ## Future Work
 
