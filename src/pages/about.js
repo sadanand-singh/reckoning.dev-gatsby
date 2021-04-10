@@ -90,6 +90,9 @@ const About = _ => {
             </div>
           </div>
           <SkillsList />
+          <h2 id="publications" className="relative mt-12 mb-6 text-2xl font-bold text-accent">
+            Publications
+            </h2>
           <PublicationsGrid />
           <Heading>Projects</Heading>
           <p className="-mt-3 mb-8 text-tertiary">
