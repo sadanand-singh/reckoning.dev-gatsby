@@ -1,5 +1,12 @@
 const data = [
     {
+        date: "10 April 2021",
+        title: "Truely Sparse Object Detection: Sparse R-CNN",
+        text: "A purely sparse method for object detection in images. A ﬁxed set of learned object proposals, total length of N, are used, thus eleiminating upto hundreds of thousands had designed candidate proposals.",
+        type: "github",
+        link: "https://github.com/PeizeSun/SparseR-CNN",
+    },
+    {
         date: "5 April 2021",
         title: "UPDATE: A more reactive site and blog with gatsby",
         text: "Updated this blog site to use gatsby! Allows me to add many react components in pages and provide a more interactive experience.",
