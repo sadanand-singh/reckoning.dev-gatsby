@@ -41,10 +41,13 @@ In summary, following is the logic used in this website:
 
 ## Implementation
 
-If you think about the above logic, the biggest issue is its an $\mathcal{O}(n^3)$ algorithm. So If
-you have a site with 100 posts, it needs to calculate $100 \times 100 = 10,000$ similarities for
-each of the 100 posts, in total leading to $100^3$, i.e. 1 million computations! Clearly this is
-something you would not want to do at runtime using javascript.
+If you think about the above logic, the biggest issue is  that this is an $\mathcal{O}(n^2 \log {} n)$ algorithm:
+calculate similarities between every post vs all other posts ($\mathcal{O}(n^2)$) and then sort each
+of the lists of similarities ($\mathcal{O}(n^2 \log {} n)$). So If you have a site with 100 posts,
+it needs to calculate 100 similarities, and then sort each of the 100 size array using
+$100 \times \log{} 100 \approx 330$ calculations, for each of the 100 posts, thus, requiring a total
+of $100 \times 430 \approx 430, 000$ calculations! Clearly this is something you would not want to
+do at runtime using javascript.
 
 Luckily in gatsby.js, you can have these calculations performed at the build time. Gtasby provides a
 [schema customization API](https://www.gatsbyjs.org/docs/schema-customization) - that can be used
