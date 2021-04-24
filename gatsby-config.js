@@ -83,8 +83,8 @@ module.exports = {
         extensions: [`.mdx`, `.md`],
         remarkPlugins: [
           require('remark-math'),
-          require('remark-html-katex'),
         ],
+        rehypePlugins: [require(`rehype-katex`)],
         gatsbyRemarkPlugins: [
           {
             resolve: `gatsby-remark-images`,
