@@ -1,27 +1,26 @@
 ---
-title: 'Support Vector Machines'
-slug: 'svm'
+title: "Support Vector Machines"
+slug: "svm"
 date: 2016-11-11
 tags:
-  - 'Algorithms'
-  - 'Machine Learning'
+  - "Algorithms"
+  - "Machine Learning"
 published: true
 toc: true
 featured: true
 ---
+
 import { Callout } from "../../../src/components/atoms.js"
 
 In this post we will explore a class of machine learning methods called
 [Support Vector Machines](https://en.wikipedia.org/wiki/Support_vector_machine) also known commonly
 as _SVM_.
 
-## Introduction
-
 SVM is a [supervised machine learning](https://en.wikipedia.org/wiki/Supervised_learning) algorithm
 which can be used for both classification and regression.
 
 <div style="float: right; margin: 10px;">
-<img src='https://res.cloudinary.com/sadanandsingh/image/upload/v1596313988/binaryclass_2d-300x284_kmozm1_q5ogxk.png' />
+  <img src="https://res.cloudinary.com/sadanandsingh/image/upload/v1596313988/binaryclass_2d-300x284_kmozm1_q5ogxk.png" />
 </div>
 
 In the simplest classification problem, given some data points each belonging to one of the two
@@ -41,7 +40,7 @@ linearly separable in space defined by the vector **x**. Green and purple line s
 with a small margin, whereas yellow line separates them with the maximum margin.
 
 <div style="float: left; margin: 10px;">
-<img src='https://res.cloudinary.com/sadanandsingh/image/upload/v1596314018/binaryclass_margin-300x266_wammb3_jng4n9.png' />
+  <img src="https://res.cloudinary.com/sadanandsingh/image/upload/v1596314018/binaryclass_margin-300x266_wammb3_jng4n9.png" />
 </div>
 
 Mathematically, for the linearly separable case, any point **x** lying on the separating hyperplane
@@ -102,11 +101,13 @@ is no maximal margin classifier.
 
 ## Support Vector Classifier
 
+<div style="float: left; margin: 10px;">
+  <img src="https://res.cloudinary.com/sadanandsingh/image/upload/v1596314052/softmargin-300x266_lqp75o_hsggxv.png" />
+</div>
+
 We can extend the concept of a separating hyper plane in order to develop a hyper plane that
 _almost_ separates the classes, using a so-called _soft margin_. The generalization of the maximal
 margin classifier to the non-separable case is known as the **support vector** classifier.
-
-![](https://res.cloudinary.com/sadanandsingh/image/upload/v1596314052/softmargin-300x266_lqp75o_hsggxv.png)
 
 Assuming the classes overlap in the given feature space. One way to deal with the overlap is to
 still maximize M, but allow for some points to be on the wrong side of the margin. In order to
