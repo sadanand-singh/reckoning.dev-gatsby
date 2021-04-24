@@ -65,6 +65,8 @@ const IndexPage = () => {
         </div>
       </div>
 
+      <PostList posts={data.allMdx.edges} showHeading />
+
       <h2 className="mt-24 font-normal text-accent tracking-widestest">
         RECENT NEWS/UPDATES
         </h2>
@@ -77,8 +79,6 @@ const IndexPage = () => {
                 </span>
         </Link>
       </div>
-
-      <PostList posts={data.allMdx.edges} showHeading />
 
       <h2 className="mt-24 font-normal text-accent tracking-widestest mb-8">
         RECENT PUBLICATIONS
