@@ -1,5 +1,12 @@
 const data = [
     {
+        date: "1 May 2021",
+        title: "UPDATE: COVID-19 Vaccine",
+        text: "Got my first dose of pfizer COVID-19 vaccine today at CVS!",
+        type: "twitter",
+        link: "https://twitter.com/reckoningdev/status/1388721135240445953",
+    },
+    {
         date: "10 April 2021",
         title: "Truely Sparse Object Detection: Sparse R-CNN",
         text: "A purely sparse method for object detection in images. A ﬁxed set of learned object proposals, total length of N, are used, thus eleiminating upto hundreds of thousands had designed candidate proposals.",
