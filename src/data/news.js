@@ -1,5 +1,12 @@
 const data = [
     {
+        date: "22 May 2021",
+        title: "UPDATE: COVID-19 Vaccine 2nd dose",
+        text: "Got my seconddose of pfizer COVID-19 vaccine today at CVS!",
+        type: "twitter",
+        link: "https://twitter.com/reckoningdev/status/1396341142178828290",
+    },
+    {
         date: "1 May 2021",
         title: "UPDATE: COVID-19 Vaccine",
         text: "Got my first dose of pfizer COVID-19 vaccine today at CVS!",
