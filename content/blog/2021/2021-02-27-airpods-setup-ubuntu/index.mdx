@@ -1,5 +1,5 @@
 ---
-title: 'Setting up Airpods Pro on Ubuntu 20.04'
+title: "Setting up Airpods Pro on Ubuntu 20.04"
 date: "2021-02-27T16:20:00.000Z"
 published: true
 toc: true
@@ -8,6 +8,7 @@ tags:
   - Linux
   - Guides
 ---
+
 import { Callout } from "../../../../src/components/atoms.js"
 
 If you have apple airpods or airpods pro, and sometimes want to use it with your Ubuntu machines,
@@ -41,113 +42,117 @@ Ubuntu 20.04.
 
 2. Configure pulseaudio to use ofono:
 
-    Goto `/etc/pulse/default.pa`, find the line `load-module module-bluetooth-discover` and change
-    it to `load-module module-bluetooth-discover headset=ofono`.
+   Goto `/etc/pulse/default.pa`, find the line `load-module module-bluetooth-discover` and change
+   it to `load-module module-bluetooth-discover headset=ofono`.
 
-    Add the user `pulse` to group `bluetooth` to grant the permission:
-    `sudo usermod -aG bluetooth pulse`
+   Add the user `pulse` to group `bluetooth` to grant the permission:
+   `sudo usermod -aG bluetooth pulse`
 
-    **VERY IMPORTANT:** To grant the permission, add the following code snippets to
-    `/etc/dbus-1/system.d/ofono.conf` (before `</busconfig>`):
+   **VERY IMPORTANT:** To grant the permission, add the following code snippets to
+   `/etc/dbus-1/system.d/ofono.conf` (before `</busconfig>`):
 
-    ```xml
-    <policy user="pulse">
-    <allow send_destination="org.ofono"/>
-    </policy>
-    ```
+   ```xml
+   <policy user="pulse">
+   <allow send_destination="org.ofono"/>
+   </policy>
+   ```
 
 3. In order to make ofono work, you have to provide a modem to it!
    You can install a modem emulator called `phonesim` (implemented by `ofono`) to make it work:
 
-    install `ofono-phonesim`:
+   install `ofono-phonesim`:
 
-    ```bash
-    sudo add-apt-repository ppa:smoser/bluetooth
-    sudo apt-get update
-    sudo apt-get install ofono-phonesim
-    ```
+   ```bash
+   sudo add-apt-repository ppa:smoser/bluetooth
+   sudo apt-get update
+   sudo apt-get install ofono-phonesim
+   ```
 
-    Configure `phonesim` by adding the following lines to `/etc/ofono/phonesim.conf`:
+   Configure `phonesim` by adding the following lines to `/etc/ofono/phonesim.conf`:
 
-    ```bash
-    [phonesim]
-    Driver=phonesim
-    Address=127.0.0.1
-    Port=12345
-    ```
+   ```bash
+   [phonesim]
+   Driver=phonesim
+   Address=127.0.0.1
+   Port=12345
+   ```
 
-    Now, restart `ofono` service as:
+   Now, restart `ofono` service as:
 
-    ```bash
-    sudo systemctl restart ofono.service
-    ```
+   ```bash
+   sudo systemctl restart ofono.service
+   ```
 
-    Now you will need to define and enable few services to start the `ofono-phonesim` as service.
+   Now you will need to define and enable few services to start the `ofono-phonesim` as service.
 
-    To run `ofono-phonesim -p 12345 /usr/share/phonesim/default.xml` on startup as a systemd unit,
-    create the file `/etc/systemd/system/ofono-phonesim.service`(as root) with the following
-    contents:
+   To run `ofono-phonesim -p 12345 /usr/share/phonesim/default.xml` on startup as a systemd unit,
+   create the file `/etc/systemd/system/ofono-phonesim.service`(as root) with the following
+   contents:
 
-    ```bash
-    [Unit]
-    Description=Run ofono-phonesim in the background
+   ```bash
+   [Unit]
+   Description=Run ofono-phonesim in the background
 
-    [Service]
+   [Service]
 
-    ExecStart=ofono-phonesim -p 12345 /usr/share/phonesim/default.xml
-    Type=simple
-    RemainAfterExit=yes
+   ExecStart=ofono-phonesim -p 12345 /usr/share/phonesim/default.xml
+   Type=simple
+   RemainAfterExit=yes
 
-    [Install]
+   [Install]
 
-    WantedBy=multi-user.target
-    ```
+   WantedBy=multi-user.target
+   ```
 
-    After ofono-phonesim runs, you'll need to also enable and put the phonesim modem online.
+   After ofono-phonesim runs, you'll need to also enable and put the phonesim modem online.
 
-    You will first need to use this githup repo:
+   You will first need to use this githup repo:
 
-    ```bash
-    cd /tmp
-    git clone git://git.kernel.org/pub/scm/network/ofono/ofono.git
-    sudo mv ofono /opt/
-    ```
+   As pointed in comments below, you might need a particular git commit for it to work the way it worked for me. The particular commit that I used the commit
+   `b3682c6bab99cbe301fa9bf4a2416c3f730d8bfd` from the repo.
 
-    Now you can enable and make phonesim modem online by creating another `systemd` unit file that
-    depends on the above `ofono-phonesim` `systemd` unit. Put the following contents
-    in `/etc/systemd/system/phonesim-enable-modem.service`:
+   ```bash
+   cd /tmp
+   git clone git://git.kernel.org/pub/scm/network/ofono/ofono.git
+   git checkout 	b3682c6bab99cbe301fa9bf4a2416c3f730d8bfd
+   sudo mv ofono /opt/
+   ```
 
-    ```bash:title=/etc/systemd/system/phonesim-enable-modem.service
-    [Unit]
-    Description=Enable and online phonesim modem
-    Requires=ofono-phonesim.service
+   Now you can enable and make phonesim modem online by creating another `systemd` unit file that
+   depends on the above `ofono-phonesim` `systemd` unit. Put the following contents
+   in `/etc/systemd/system/phonesim-enable-modem.service`:
 
-    [Service]
+   ```bash:title=/etc/systemd/system/phonesim-enable-modem.service
+   [Unit]
+   Description=Enable and online phonesim modem
+   Requires=ofono-phonesim.service
 
-    ExecStart=/opt/ofone/test/enable-modem /phonesim
-    ExecStart=/opt/ofone/test/online-modem /phonesim
-    Type=oneshot
-    RemainAfterExit=yes
+   [Service]
 
-    [Install]
+   ExecStart=/opt/ofono/test/enable-modem /phonesim
+   ExecStart=/opt/ofono/test/online-modem /phonesim
+   Type=oneshot
+   RemainAfterExit=yes
 
-    WantedBy=multi-user.target
-    ```
+   [Install]
 
-    Then run the following commands to run both daemons:
+   WantedBy=multi-user.target
+   ```
 
-    ```bash
-    sudo systemctl daemon-reload
-    sudo systemctl enable ofono-phonesim.service
-    sudo systemctl enable phonesim-enable-modem.service
-    sudo service phonesim-enable-modem start
-    ```
+   Then run the following commands to run both daemons:
 
-    Check if the service is running with
+   ```bash
+   sudo systemctl daemon-reload
+   sudo systemctl enable ofono-phonesim.service
+   sudo systemctl enable phonesim-enable-modem.service
+   sudo service phonesim-enable-modem start
+   ```
 
-    ```bash
-    sudo service phonesim-enable-modem status
-    ```
+   Check if the service is running with
+
+   ```bash
+   sudo service phonesim-enable-modem status
+   ```
 
 Finally, restart `pulseaudio` with `pulseaudio -k`.
 
