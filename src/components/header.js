@@ -31,11 +31,11 @@ const Header = ({ activePage }) => (
           About
         </NavLink>
         <NavExtLink
-          to="https://wiki.reckoning.dev"
-          title="Wiki"
-          selected={activePage === "wiki"}
+          to="https://github.com/sadanand-singh"
+          title="Github"
+          selected={activePage === "Github"}
         >
-          Wiki
+          Github
         </NavExtLink>
       </span>
       <ThemeToggle className="hidden sm:block hover:text-accent transition duration-150" />
