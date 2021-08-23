@@ -32,10 +32,10 @@ const Header = ({ activePage }) => (
         </NavLink>
         <NavExtLink
           to="https://notes.reckoning.dev/"
-          title="Digital Garden"
-          selected={activePage === "Digital Garden"}
+          title="Wiki"
+          selected={activePage === "wiki"}
         >
-          Digital Garden
+          Wiki
         </NavExtLink>
       </span>
       <ThemeToggle className="hidden sm:block hover:text-accent transition duration-150" />
