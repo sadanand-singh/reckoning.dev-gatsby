@@ -68,7 +68,7 @@ const MobileNav = () => {
               <Link to="/about">ABOUT</Link>
             </div>
             <div className="flex-grow">
-              <Link to="https://notes.reckoning.dev" target="_blank" rel="noopener noreferrer">NOTES</Link>
+              <Link to="https://github.com/sadanand-singh" target="_blank" rel="noopener noreferrer">GITHUB</Link>
             </div>
             <ThemeToggle />
           </nav>
