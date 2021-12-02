@@ -2,4 +2,4 @@
   publish = "public"
 
 [build.environment]
-  NODE_VERSION = "14.16.0"
+  NODE_VERSION = "v17.0.1"
