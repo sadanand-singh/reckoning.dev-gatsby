@@ -84,9 +84,7 @@ export default {
       resolve: `gatsby-plugin-mdx`,
       options: {
         extensions: [`.mdx`, `.md`],
-        remarkPlugins: [
-          remarkMath,
-        ],
+        remarkPlugins: [remarkMath],
         rehypePlugins: [rehypeKatex],
         gatsbyRemarkPlugins: [
           {
