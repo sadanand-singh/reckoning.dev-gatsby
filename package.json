@@ -9,6 +9,7 @@
     "@mdx-js/mdx": "^1.6.22",
     "@mdx-js/react": "^1.6.22",
     "@tailwindcss/typography": "^0.4.0",
+    "esm": "^3.2.25",
     "gatsby": "^4.3.0",
     "gatsby-plugin-catch-links": "^4.3.0",
     "gatsby-plugin-env-variables": "^2.1.0",
