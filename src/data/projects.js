@@ -1,5 +1,17 @@
 const data = [
   {
+    slug: "https://github.com/sadanand-singh/raycast-spotify-player",
+    title: "Spotify Player for Raycast",
+    description: "Spotify extension for Raycast",
+    year: "2021",
+    links: [
+      {
+        label: "GitHub",
+        url: "https://github.com/sadanand-singh/raycast-spotify-player",
+      },
+    ],
+  },
+  {
     slug: "https://github.com/sadanand-singh/butterflies-maskrcnn",
     title: "Mask-RCNN to detect butterflies",
     description: "An Implementation of Mask-RCNN in Tensorflow to detect butterflies.",
@@ -8,23 +20,6 @@ const data = [
       {
         label: "GitHub",
         url: "https://github.com/sadanand-singh/butterflies-maskrcnn",
-      },
-    ],
-  },
-  {
-    slug: "https://wiki.reckoning.dev/",
-    title: "My Digital Garden wiki page",
-    description: "A wiki page to store eberuthing I know, my notes and research.",
-    year: "2020",
-    links: [
-      {
-        label: "GitHub",
-        url: "https://github.com/sadanand-singh/wiki.reckoning.dev",
-      },
-      {
-        label: "website",
-        url:
-          "https://wiki.reckoning.dev/",
       },
     ],
   },
