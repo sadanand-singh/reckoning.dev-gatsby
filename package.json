@@ -64,6 +64,9 @@
     "babel-loader": "^8.2.2",
     "cross-env": "^7.0.3",
     "prettier": "2.5.0",
+    "immer": ">=9.0.6",
+    "object-path": ">=0.11.8",
+    "trim": ">=0.0.3",
     "storybook-dark-mode": "^1.0.7"
   },
   "keywords": [
