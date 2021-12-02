@@ -72,7 +72,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-env-variables`,
       options: {
-        whitelist: [
+        allowList: [
           "GATSBY_GOOGLE_SITE_VERIFICATION, GOOGLE_TAGMANAGER_ID, DEV_ENV",
         ],
       },
