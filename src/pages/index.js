@@ -15,7 +15,7 @@ const IndexPage = () => {
     query IndexPageQuery {
       allMdx(
         sort: { fields: frontmatter___date, order: DESC }
-        filter: { frontmatter: { tags: { in: ["Deep Learning", "Machine Learning", "Algorithms"] }, published: { eq: true } } }
+        filter: { frontmatter: { tags: { in: ["Deep Learning", "Machine Learning", "Algorithms", "Productivity"] }, published: { eq: true } } }
         limit: 5
       ) {
         edges {
